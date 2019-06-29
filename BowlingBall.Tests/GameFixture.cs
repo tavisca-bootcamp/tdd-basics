@@ -73,10 +73,9 @@ namespace BowlingBall.Tests
 
             Assert.Equal(58, g.GetScore());
         }
-        //Yet to implement logic
-        /*
+
         [Fact]
-        public void TestCase3()
+        public void OneSpare()
         {
             g.Roll(1);
             g.Roll(7);
@@ -109,6 +108,9 @@ namespace BowlingBall.Tests
             g.Roll(2);
             Assert.Equal(60, g.GetScore());
         }
+        //Yet to implement logic
+        /*
+        
 
         [Fact]
         public void TestCase5()
