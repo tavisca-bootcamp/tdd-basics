@@ -6,6 +6,7 @@ namespace BowlingBall
        public  int[] roll = new int[21];
         public int[] frames = new int[10];
         public int presentframeIndex=0;
+        public int finalscore=0;
 
         public void RollSinglePin(int pins)
         {
@@ -36,7 +37,7 @@ namespace BowlingBall
         }
         public int GetScore()
         {
-            int finalscore=0;
+            
             int index=0;
             for(int frame_index=0;frame_index<10;frame_index++)
             {
