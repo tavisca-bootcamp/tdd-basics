@@ -65,5 +65,5 @@ namespace BowlingBall.Tests
             Assert.Equal(300, g.GetScore());
         }
 
-}
+    }
 }
