@@ -5,10 +5,25 @@ namespace BowlingBall.Tests
 {
     public class GameFixture
     {
-        [Fact]
-        public void DummyTest()
+        public Game g;
+        public GameFixture()
         {
-            // This is a dummy test that will always pass.
+            g= new Game();
+        }
+        public roll(int number_of_pins,int value)
+        {
+            for(int i=0;i<number_of_pins;i++)
+            {
+                g.roll(value);
+            }
+        }
+
+        [Fact]
+        public void TestAllStrikes()
+        {
+            roll(20,10);
+            Assert.Equal(300,g.final_score);
+            
         }
     }
 }
