@@ -2,16 +2,18 @@
 
 namespace BowlingBall
 {
+    
     public class Game
     {
+        private int score;
         public void Roll(int pins)
         {
-            throw new NotImplementedException();
+            
         }
 
         public int GetScore()
         {
-            throw new NotImplementedException();
+            return score;
         }
 
     }
