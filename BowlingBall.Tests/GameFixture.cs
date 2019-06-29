@@ -10,11 +10,11 @@ namespace BowlingBall.Tests
         {
             g= new Game();
         }
-        public roll(int number_of_pins,int value)
+        public void roll(int number_of_pins,int value)
         {
             for(int i=0;i<number_of_pins;i++)
             {
-                g.roll(value);
+                g.RollSinglePin(value);
             }
         }
 
@@ -22,7 +22,7 @@ namespace BowlingBall.Tests
         public void TestAllStrikes()
         {
             roll(20,10);
-            Assert.Equal(300,g.final_score);
+            Assert.Equal(300,g.finalscore);
             
         }
     }
