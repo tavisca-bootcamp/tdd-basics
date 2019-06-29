@@ -54,10 +54,16 @@ namespace BowlingBall.Tests
             Assert.Equal(163,g.GetScore());
         }
         [Fact]
-        public void Randomtwo()
+        public void LastStrike()
         {
         g.RollMultiplePin(new int[]{8,0,1,4,6,2,9,0,10,3,0,2,0,7,0,9,0,10,1,4});
         Assert.Equal(79,g.GetScore());
+        }
+        [Fact]
+        public void Lastspare()
+        {
+        g.RollMultiplePin(new int[]{2,4,4,5,2,7,9,1,5,0,4,5,1,8,5,3,10,1,9,5});
+        Assert.Equal(105,g.GetScore());
         }
     }
 }
