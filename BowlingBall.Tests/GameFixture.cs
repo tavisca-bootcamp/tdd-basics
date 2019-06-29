@@ -47,5 +47,12 @@ namespace BowlingBall.Tests
             Assert.Equal(102,g.GetScore());
 
         }
+        [Fact]
+        public void AllSpares()
+        {
+            g.RollMultiplePin(new int[]{9,1,8,2,7,3,6,4,5,5,4,6,7,3,1,9,8,2,7,3,10});
+            Assert.Equal(163,g.GetScore());
+            }
+
     }
 }
