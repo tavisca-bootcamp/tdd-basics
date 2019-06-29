@@ -4,7 +4,7 @@ namespace BowlingBall
 {
     public class Game
     {
-        
+        private int[] frame = new int[10];
         private int [] score = new int[21];
         private int count=0;
 
@@ -17,6 +17,14 @@ namespace BowlingBall
 
         public int GetScore()
         {
+            int j = 0, x = 0;
+            for(int i=0;i<10;i++)
+            {
+                frame[i]=x+score[j]+score[j+1];
+                j = j + 2;
+                x = frame[i];
+            }
+            return frame[9];
             throw new NotImplementedException();
         }
 
