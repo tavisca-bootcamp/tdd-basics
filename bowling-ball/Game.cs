@@ -8,12 +8,16 @@ namespace BowlingBall
         public int[] rolls = new int[MAX_BALLS];
         int countRoll = 0;
         private bool IsSpare(int RollIndex) {
-            return rolls[RollIndex] + rolls[RollIndex + 1] == 10;
+            if(rolls[RollIndex] + rolls[RollIndex + 1] == 10)
+                return true;
+            return false;
         }
 
         private bool IsStrike(int RollIndex)
         {
-            return rolls[RollIndex] == 10;
+            if(rolls[RollIndex] == 10)
+                return true;
+            return false;
         }
         public void Roll(int pins)
         {
@@ -27,12 +31,12 @@ namespace BowlingBall
             int RollIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (IsSpare(RollIndex))
+                if(IsSpare(RollIndex))
                 {
                     score += 10 + rolls[RollIndex + 2];
                     RollIndex += 2;
                 }
-                else if (IsStrike(RollIndex))
+                else if(IsStrike(RollIndex))
                 {
                     score += 10 + rolls[RollIndex + 1] + rolls[RollIndex + 2];
                     RollIndex++;
