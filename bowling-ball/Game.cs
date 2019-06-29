@@ -21,7 +21,12 @@ namespace BowlingBall
             int j = 0, x = 0;
             for(int i=0;i<10;i++)
             {
-                if (score[j] + score[j + 1] == 10)
+                if(score[j]==10)
+                {
+                    frame[i] = x + 10 + score[j + 1] + score[j + 2];
+                    j++;
+                }
+                else if (score[j] + score[j + 1] == 10)
                 {
                     frame[i] = x + 10 + score[j + 2];
                     j = j + 2;
