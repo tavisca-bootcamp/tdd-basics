@@ -1,14 +1,34 @@
 using System;
 using Xunit;
+using BowlingBall;
 
 namespace BowlingBall.Tests
 {
     public class GameFixture
     {
-        [Fact]
-        public void DummyTest()
+
+        private Game g = new Game();
+
+        private void RollMany(int n, int pins)
         {
-            // This is a dummy test that will always pass.
+            for (int i = 0; i < n; i++)
+                g.Roll(pins);
         }
+
+        [Fact]
+        public void TestGutterGame()
+        {
+            RollMany(20, 0);
+            Assert.Equal(0, g.GetScore());
+        }
+
+        [Fact]
+        public void TestAllOnes()
+        {
+            RollMany(20, 1);
+            Assert.Equal(20, g.GetScore());
+        }
+
+        
     }
 }
