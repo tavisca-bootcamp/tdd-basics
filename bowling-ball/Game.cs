@@ -10,10 +10,10 @@ namespace BowlingBall
         public int valid = 0;
         public void Roll(int pins)
         {
-            if (valid == 1)
+            if (valid != 0)
             {
                 score += pins;
-                valid = 0;
+                valid--;
             }
             if(count%2==1)
             {
@@ -23,7 +23,12 @@ namespace BowlingBall
             {
                 buffer += pins;
                 if (buffer == 10)
+                {
                     valid = 1;
+                    if (pins == 0)
+                        valid = 3;
+                }
+                
             }
 
             score += pins;

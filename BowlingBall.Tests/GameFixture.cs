@@ -108,12 +108,45 @@ namespace BowlingBall.Tests
             g.Roll(2);
             Assert.Equal(60, g.GetScore());
         }
-        //Yet to implement logic
-        /*
-        
 
         [Fact]
-        public void TestCase5()
+        public void MulipleSpares()
+        {
+            g.Roll(5);
+            g.Roll(3);
+
+            g.Roll(4);
+            g.Roll(6);
+
+            g.Roll(1);
+            g.Roll(8);
+
+            g.Roll(2);
+            g.Roll(1);
+
+            g.Roll(1);
+            g.Roll(9);
+
+            g.Roll(5);
+            g.Roll(2);
+
+            g.Roll(0);
+            g.Roll(0);
+
+            g.Roll(1);
+            g.Roll(8);
+
+            g.Roll(1);
+            g.Roll(8);
+
+            g.Roll(9);
+            g.Roll(0);
+
+            Assert.Equal(80, g.GetScore());
+        }
+
+        [Fact]
+        public void OneStrike()
         {
             g.Roll(0);
             g.Roll(2);
@@ -139,14 +172,19 @@ namespace BowlingBall.Tests
             g.Roll(6);
             g.Roll(3);
 
-            g.Roll(8);
-            g.Roll(2);
-
-            g.Roll(9);
-            g.Roll(1);
             g.Roll(10);
-            Assert.Equal(99, g.GetScore());
+            g.Roll(0);
+
+            g.Roll(8);
+            g.Roll(1);
+
+            Assert.Equal(78, g.GetScore());
         }
+        //Yet to implement logic
+        /*
+        
+
+        
 
         [Fact]
         public void TestCase10()
@@ -190,41 +228,7 @@ namespace BowlingBall.Tests
             Assert.Equal(300, g.GetScore());
         }
         
-        [Fact]
-        public void TestCase11()
-        {
-            g.Roll(5);
-            g.Roll(3);
-
-            g.Roll(4);
-            g.Roll(6);
-
-            g.Roll(1);
-            g.Roll(8);
-
-            g.Roll(2);
-            g.Roll(1);
-
-            g.Roll(1);
-            g.Roll(9);
-
-            g.Roll(5);
-            g.Roll(2);
-
-            g.Roll(0);
-            g.Roll(0);
-
-            g.Roll(1);
-            g.Roll(8);
-
-            g.Roll(1);
-            g.Roll(9);
-
-            g.Roll(10);
-            g.Roll(0);
-            g.Roll(3);
-            Assert.Equal(98, g.GetScore());
-        }
+        
 
         [Fact]
         public void TestCase12()
