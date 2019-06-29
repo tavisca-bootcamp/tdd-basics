@@ -28,7 +28,7 @@ namespace BowlingBall.Tests
         public void DummyTest2()
         {
             // This is a dummy test that will always pass.
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 21; i++)
                 obj.Roll(5);
             Assert.Equal(150, obj.GetScore());
         }
