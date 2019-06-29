@@ -110,6 +110,40 @@ namespace BowlingBall.Tests
             Assert.Equal(expectedScore,actualScore);
         }
 
+        [Fact]
+        public void CannotKnockLessThanZeroPins()
+        {
+            Action act = () => this.game.Roll(-1);
+            Assert.Throws<ArgumentOutOfRangeException>(act);
+        }
+
+        [Fact]
+        public void CannotKnockMoreThanTenPins()
+        {
+        Action act = () => this.game.Roll(11);
+            Assert.Throws<ArgumentOutOfRangeException>(act);
+        }
+
+        [Fact]
+        public void CanTakeSpareAndStrikeInAGame()
+        {
+            int expectedScore = 74;
+            this.game.Roll(10);
+
+            this.game.Roll(5);
+            this.game.Roll(4);
+
+            this.game.Roll(6);
+            this.game.Roll(4);
+
+            this.game.Roll(5);
+            RollMany(2,13);
+
+            int actualScore = this.game.GetScore();
+            Assert.Equal(expectedScore,actualScore);
+            
+        }
+
 
 
     }

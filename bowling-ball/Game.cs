@@ -7,8 +7,10 @@ namespace BowlingBall
         int[] roll = new int[21];
         int rollIndex = 0;
 
-        public void Roll(int pins)
+        public void Roll(int pins) 
         {
+            if(pins < 0 || pins > 10)
+                throw new ArgumentOutOfRangeException();
             if(rollIndex < 20){
                 roll[rollIndex] = pins;
                 rollIndex++;
