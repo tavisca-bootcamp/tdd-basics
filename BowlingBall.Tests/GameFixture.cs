@@ -25,5 +25,11 @@ namespace BowlingBall.Tests
             Assert.Equal(300,g.GetScore());
             
         }
+        [Fact]
+        public void TestAllZeros()
+        {
+            roll(20,0);
+            Assert.Equal(0,g.GetScore());
+        }
     }
 }
