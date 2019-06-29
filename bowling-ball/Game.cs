@@ -36,7 +36,7 @@ namespace BowlingBall
 		{
 			return (rolls[frameIndex] + rolls[frameIndex+1]);
 		}
-
+		// Comment to test TravisCI
 		public int GetScore()
         {
 			int score = 0;
