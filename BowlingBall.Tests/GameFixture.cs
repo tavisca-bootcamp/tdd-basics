@@ -22,7 +22,7 @@ namespace BowlingBall.Tests
         public void TestAllStrikes()
         {
             roll(20,10);
-            Assert.Equal(300,g.finalscore);
+            Assert.Equal(300,g.GetScore());
             
         }
     }
