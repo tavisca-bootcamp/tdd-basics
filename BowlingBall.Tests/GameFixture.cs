@@ -32,5 +32,14 @@ namespace BowlingBall.Tests
                 obj.Roll(5);
             Assert.Equal(150, obj.GetScore());
         }
+        [Fact]
+        public void DummyTest3()
+        {
+            // This is a dummy test that will always pass.
+            for (int i = 0; i < 12; i++)
+                obj.Roll(10);
+            Assert.Equal(300, obj.GetScore());
+        }
+
     }
 }
