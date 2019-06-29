@@ -5,11 +5,7 @@ namespace BowlingBall.Tests
 {
     public class GameFixture
     {
-        [Fact]
-        public void DummyTest()
-        {
-            // This is a dummy test that will always pass.
-        }
+        
         [Fact]
         public void TestAllZero()
         {
@@ -18,7 +14,15 @@ namespace BowlingBall.Tests
                 g.Roll(0);
             Assert.Equal(0, g.GetScore()); //Assert
         }
-        
+
+        public void TestNoStrikeNoSpare()
+        {
+            var g = new Game(); // Arrange
+            for (int i = 0; i < 20; i++) // Act
+                g.Roll(3);
+            Assert.Equal(60, g.GetScore()); //Assert
+        }
+
 
     }
 }

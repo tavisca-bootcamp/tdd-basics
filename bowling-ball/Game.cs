@@ -8,7 +8,7 @@ namespace BowlingBall
         private int score;
         public void Roll(int pins)
         {
-            
+            score += pins;
         }
 
         public int GetScore()
