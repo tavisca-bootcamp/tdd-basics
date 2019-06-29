@@ -1,94 +1,166 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BowlingBall
 {
     public class Game
     {
+        bool extraFrame = false;
+        int remainingPins = 0;
+        int currentFrame = 1;
+        bool secondShot = false;
+        List<Frame> frame= new List<Frame>();
         public void Roll(int pins)
         {
-            int[] frameOpportunityOne = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            int[] frameOpportunityTwo = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            int oneExtraShot = 0;
-        }
-
-        public int GetScore(int[] frameOpportunityOne, int[] frameOpportunityTwo, int oneExtraShot)
-        {
-            int[] eachFrameScore = new int[frameOpportunityOne.Length];
-            int score = 0;
-            for(int i=0; i<eachFrameScore.Length; i++){
-                if(i == frameOpportunityOne.Length-1){
-                    if(frameOpportunityOne[i] == 10){
-                        score += 10 + oneExtraShot;
-                       
-                        eachFrameScore[i] = score;
-                    }
-                    else if(frameOpportunityOne[i] + frameOpportunityTwo[i] == 10){
-                        score += frameOpportunityOne[i] + frameOpportunityTwo[i] + oneExtraShot;
-                        
-                        eachFrameScore[i] = score;
-                    }
-                    else if(frameOpportunityOne[i] + frameOpportunityTwo[i] < 10){
-                        score += frameOpportunityOne[i] + frameOpportunityTwo[i];
-
-                        eachFrameScore[i] = score;
+            if(currentFrame < 10)
+            {
+                if(pins == 10){
+                    currentFrame++;
+                    frame.Add(new Frame(pins, false, true));
+                }
+                else if(pins < 10){
+                    if(!secondShot){
+                        secondShot = true;
+                        remainingPins = 10 - pins;
+                        frame.Add(new Frame(pins, false, false));
                     }
                     else{
-                        return -1;
-                    }
-                }
-                else if(i == frameOpportunityOne.Length-2){
-                    if(frameOpportunityOne[i] == 10){
-                        if(frameOpportunityOne[i+1] == 10){
-                            score += 10 + frameOpportunityOne[i+1] + oneExtraShot;
+                        secondShot = false;
+                        if(pins == remainingPins){
+                            frame[currentFrame - 1].SetRoll2(pins, true);
+                            currentFrame++;
+                        }
+                        else if(pins < remainingPins){
+                            frame[currentFrame - 1].SetRoll2(pins, false);
+                            currentFrame++;
                         }
                         else{
-                            score += 10 + frameOpportunityOne[i+1] + frameOpportunityTwo[i+1];
+                            throw new Exception ("Didn't had those many pins.");
                         }
-
-                        eachFrameScore[i] = score;
-                    }
-                    else if(frameOpportunityOne[i] + frameOpportunityTwo[i] == 10){
-                        score += frameOpportunityOne[i] + frameOpportunityTwo[i] + frameOpportunityOne[i+1];
-                        
-                        eachFrameScore[i] = score;
-                    }
-                    else if(frameOpportunityOne[i] + frameOpportunityTwo[i] < 10){
-                        score += frameOpportunityOne[i] + frameOpportunityTwo[i];
-
-                        eachFrameScore[i] = score;
-                    }
-                    else{
-                        return - 1;
+                        remainingPins = 0;
                     }
                 }
                 else{
-                    if(frameOpportunityOne[i] == 10){
-                        if(frameOpportunityOne[i+1] == 10){
-                            score += 10 + frameOpportunityOne[i+1] + frameOpportunityOne[i+2];
+                    throw new Exception ("Didn't had those many pins.");
+                }
+            }
+            else if(currentFrame == 10){
+                if(secondShot){
+                    secondShot = false;
+                        if(pins == 10){
+                            frame[9].SetRoll2(pins, true);
+                            extraFrame = true;
+                        }
+                        else if(pins == remainingPins){
+                            frame[9].SetRoll2(pins, true);
+                            extraFrame = true;
+                        }
+                        else if(pins < remainingPins){
+                            frame[9].SetRoll2(pins, false);
+                            currentFrame++;
                         }
                         else{
-                            score += 10 + frameOpportunityOne[i+1] + frameOpportunityTwo[i+1];
+                            throw new Exception ("Didn't had those many pins.");
                         }
-
-                        eachFrameScore[i] = score;
+                        remainingPins = 0;
+                }
+                else if(extraFrame){
+                    currentFrame++;
+                    if(pins == 10){
+                        frame.Add(new Frame(pins, true, true));
                     }
-                    else if(frameOpportunityOne[i] + frameOpportunityTwo[i] == 10){
-                        score += frameOpportunityOne[i] + frameOpportunityTwo[i] + frameOpportunityOne[i+1];
-                        
-                        eachFrameScore[i] = score;
-                    }
-                    else if(frameOpportunityOne[i] + frameOpportunityTwo[i] < 10){
-                        score += frameOpportunityOne[i] + frameOpportunityTwo[i];
-
-                        eachFrameScore[i] = score;
+                    else if(pins < 10){
+                        frame.Add(new Frame(pins, true, false));
                     }
                     else{
-                        return -1;
+                        throw new Exception ("Didn't had those many pins.");
+                    }
+                }
+                else if(pins == 10){
+                    secondShot = true;
+                    frame.Add(new Frame(pins, true, true));
+                    extraFrame = true;
+                    secondShot = true;
+                }
+                else if(pins < 10){
+                    if(!secondShot){
+                        secondShot = true;
+                        remainingPins = 10 - pins;
+                        frame.Add(new Frame(pins, true, false));
+                    }
+                }
+                else{
+                    throw new Exception ("Didn't had those many pins.");
+                }
+
+            }
+        }
+
+        public int GetScore(){
+            int score = 0;
+            for(int frameIterator = 0; frameIterator < 8; frameIterator++){
+                score += frame[frameIterator].GetRoll1() + frame[frameIterator].GetRoll2();
+                if(frame[frameIterator].GetIsSpare()){
+                    score += frame[frameIterator + 1].GetRoll1();
+                }
+                if(frame[frameIterator].GetIsStrike()){
+                    if(frame[frameIterator + 1].GetIsStrike()){
+                        score += frame[frameIterator + 1].GetRoll1() + frame[frameIterator + 2].GetRoll1();
+                    }
+                    else{
+                        score += frame[frameIterator + 1].GetRoll1() + frame[frameIterator + 1].GetRoll2();
                     }
                 }
             }
+            score += frame[8].GetRoll1() + frame[8].GetRoll2();
+                if(frame[8].GetIsSpare()){
+                    score += frame[9].GetRoll1();
+                }
+                if(frame[8].GetIsStrike()){
+                    score += frame[9].GetRoll1() + frame[9].GetRoll2();
+                }
+            
+            score += frame[9].GetRoll1() + frame[9].GetRoll2();
+                if(frame[8].GetIsSpare()){
+                    score += frame[10].GetRoll1();
+                }
+                if(frame[8].GetIsStrike()){
+                    score += frame[10].GetRoll1();
+                }
 
             return score;
+        }
+    }
+
+    class Frame{
+        int pinsInRoll1;
+        int pinsInRoll2 = 0;
+        bool isLastFrame = false;
+        bool isStrike = false;
+        bool isSpare = false;
+        public Frame(int pinsInRoll1, bool isLastFrame, bool isStrike){
+            this.pinsInRoll1 = pinsInRoll1;
+            this.isLastFrame = isLastFrame;
+            this.isStrike = isStrike;
+        }
+        public void SetRoll2(int pinsInRoll2, bool isSpare){
+            this.pinsInRoll2 = pinsInRoll2;
+            this.isSpare = isSpare;
+        }
+        public int GetRoll1(){
+            return pinsInRoll1;
+        }
+        public int GetRoll2(){
+            return pinsInRoll2;
+        }
+        public bool GetIsStrike(){
+            return isStrike;
+        }
+        public bool GetIsSpare(){
+            return isSpare;
+        }
+        public bool GetIsLastFrame(){
+            return isLastFrame;
         }
     }
 }

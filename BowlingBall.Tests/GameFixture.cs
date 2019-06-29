@@ -8,14 +8,39 @@ namespace BowlingBall.Tests
         [Fact]
         public void DummyTest()
         {
+            //arrange
             var game = new Game();
-            int[] frameOpportunityOne = {10, 9, 5, 7, 10, 10, 10, 9, 8, 9};
-            int[] frameOpportunityTwo = {00, 1, 5, 2, 00, 00, 00, 0, 2, 1};
-            var oneExtraShot = 10;
-            var expected = 187;
+
+            game.Roll(10);
+
+            game.Roll(9);
+            game.Roll(1);
+
+            game.Roll(5);
+
+            game.Roll(5);
+            game.Roll(7);
+
+            game.Roll(2);
+            game.Roll(10);
+
+            game.Roll(10);
+
+            game.Roll(10);
+            game.Roll(9);
+            game.Roll(0);
+
+            game.Roll(8);
+            game.Roll(2);
+
+            game.Roll(9);
+            game.Roll(1);
+            game.Roll(10);
+
+            int expected = 187;
 
             //act
-            var actual = Game.GetScore(frameOpportunityOne, frameOpportunityTwo, oneExtraShot);
+            var actual = game.GetScore();
 
             //assert
             Assert.Equal(expected, actual);
