@@ -32,7 +32,7 @@ namespace BowlingBall.Tests
             int n = 20;
             int pins = 1;
             RollMany(20, pins);
-            Assert.Equal(20, g.GetScore());
+            Assert.Equal(2, g.GetScore());
         }
         
     }
