@@ -65,5 +65,11 @@ namespace BowlingBall.Tests
         g.RollMultiplePin(new int[]{2,4,4,5,2,7,9,1,5,0,4,5,1,8,5,3,10,1,9,5});
         Assert.Equal(105,g.GetScore());
         }
+        [Fact]
+        public void Random2()
+        {
+        g.RollMultiplePin(new int[]{1,2,3,5,6,3,5,2,2,3,1,5,0,6,1,6,10,9,1,10});
+        Assert.Equal(91,g.GetScore());
+        }
     }
 }
