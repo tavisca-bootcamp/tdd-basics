@@ -58,5 +58,12 @@ namespace BowlingBall.Tests
             Assert.Equal(24, g.GetScore());
         }
 
-    }
+        [Fact]
+        public void TestPerfectGame()
+        {
+            RollMany(12,10);
+            Assert.Equal(300, g.GetScore());
+        }
+
+}
 }
