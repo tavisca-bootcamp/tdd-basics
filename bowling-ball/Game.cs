@@ -14,7 +14,7 @@ namespace BowlingBall
         public int GetScore()
         {
             //throw new NotImplementedException();
-            return -1;
+            return 0;
         }
 
     }
