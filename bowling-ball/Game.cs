@@ -12,7 +12,8 @@ namespace BowlingBall
         {
             score[count] = pins;
             count++;
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
+
         }
 
         public int GetScore()
