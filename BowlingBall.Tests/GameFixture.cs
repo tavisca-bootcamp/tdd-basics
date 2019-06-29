@@ -38,7 +38,14 @@ namespace BowlingBall.Tests
             g.RollSinglePin(3);
             g.RollSinglePin(4);
             roll(17,1);
-            Assert.Equal(21,g.GetScore());
+            Assert.Equal(35,g.GetScore());
+        }
+        [Fact]
+        public void Random()
+        {
+            g.RollMultiplePin(new int[]{9,0,10,1,9,3,0,7,2,8,2,0,5,9,0,10,1,6});
+            Assert.Equal(102,g.GetScore());
+
         }
     }
 }
