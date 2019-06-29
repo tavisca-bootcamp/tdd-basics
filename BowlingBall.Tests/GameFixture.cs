@@ -21,7 +21,7 @@ namespace BowlingBall.Tests
         [Fact]
         public void TestAllStrikes()
         {
-            roll(20,10);
+            roll(12,10);
             Assert.Equal(300,g.GetScore());
             
         }
@@ -30,6 +30,15 @@ namespace BowlingBall.Tests
         {
             roll(20,0);
             Assert.Equal(0,g.GetScore());
+        }
+        [Fact]
+        public void TestSpare()
+        {
+            g.RollSinglePin(7);
+            g.RollSinglePin(3);
+            g.RollSinglePin(4);
+            roll(17,1);
+            Assert.Equal(21,g.GetScore());
         }
     }
 }
