@@ -10,5 +10,11 @@ namespace BowlingBall.Tests
         {
             // This is a dummy test that will always pass.
         }
+
+        [Fact]
+        public void DummyTest1()
+        {
+            // This is a dummy test that will always pass.
+        }
     }
 }
