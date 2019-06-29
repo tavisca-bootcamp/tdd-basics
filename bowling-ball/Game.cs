@@ -44,12 +44,12 @@ namespace BowlingBall
 
         private int _spareBonus(int frameIndex)
         {
-            return 10 + Rolls[frameIndex + 1];
+            return Rolls[frameIndex + 2];
         }
 
         private int _strikeBonus(int frameIndex)
         {
-            return 10 + Rolls[frameIndex + 1] + Rolls[frameIndex + 2];
+            return Rolls[frameIndex + 1] + Rolls[frameIndex + 2];
         }
 
         private bool _isSpare(int frameIndex)
