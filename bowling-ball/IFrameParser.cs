@@ -4,7 +4,7 @@ namespace Frames
 {
     internal interface IFrameParser
     {
-        Frame[] frameParser(Roll []roll);
-        Frame getFrame(int numberOfRolls, Roll []roll);
+        Frame[] ParseFrame(Roll []roll);
+        Frame GetFrame(int numberOfRolls, Roll []roll);
     }
 }

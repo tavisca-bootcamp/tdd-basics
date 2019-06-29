@@ -10,22 +10,22 @@ namespace Frames
         {
             frame = new Frame[Frame.totalFrames];
         }
-        public Frame[] frameParser(Roll[] roll)
+        public Frame[] ParseFrame(Roll[] roll)
         {
             int i, numberOfRolls = 0;
             for (i = 0; i < Frame.totalFrames && numberOfRolls < roll.Length; i++)
             {
-                frame[i] = getFrame(numberOfRolls, roll);
-                numberOfRolls += frame[i].isStrike() ? 1 : 2;
+                frame[i] = GetFrame(numberOfRolls, roll);
+                numberOfRolls += frame[i].IsStrike() ? 1 : 2;
             }
             return frame;
         }
 
-        public Frame getFrame(int numberOfRolls, Roll[] roll)
+        public Frame GetFrame(int numberOfRolls, Roll[] roll)
         {
             Roll rollOne = roll[numberOfRolls];
             Frame f;
-            if(rollOne.getNumberOfKnockedPins() == 10)
+            if(rollOne.GetNumberOfKnockedPins() == 10)
             {
                 f = new Frame(rollOne);
                 return f;
@@ -33,7 +33,7 @@ namespace Frames
 
             if(numberOfRolls + 1 >= roll.Length)
             {
-                f = new Frame(rollOne, Roll.zero());
+                f = new Frame(rollOne, Roll.Zero());
                 return f;
             }
             Roll rollTwo = roll[numberOfRolls + 1];

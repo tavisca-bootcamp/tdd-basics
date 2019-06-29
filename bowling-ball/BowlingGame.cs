@@ -16,11 +16,11 @@ namespace BowlingBall
             score = new Score();
         }
 
-        public int calculateScores(string rolls)
+        public int CalculateScores(string rolls)
         {
-            Roll []roll = rollParser.rollParser(rolls);
-            Frame []frame = frameParser.frameParser(roll);
-            int totalScore = score.calculateScore(frame);
+            Roll []roll = rollParser.ParseRoll(rolls);
+            Frame []frame = frameParser.ParseFrame(roll);
+            int totalScore = score.CalculateScore(frame);
             return totalScore;
         }
     }

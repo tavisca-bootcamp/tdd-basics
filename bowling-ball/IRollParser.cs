@@ -2,7 +2,7 @@ namespace Rolls
 {
     internal interface IRollParser
     {
-        int getPoints(int pos, string rolls);
-        Roll[] rollParser(string rolls);
+        int GetPoints(int pos, string rolls);
+        Roll[] ParseRoll(string rolls);
     }
 }

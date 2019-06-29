@@ -12,12 +12,12 @@ namespace Rolls
             this.numberOfKnockedPins = numberOfKnockedPins;
         }
 
-        public int getNumberOfKnockedPins()
+        public int GetNumberOfKnockedPins()
         {
             return numberOfKnockedPins;
         }
 
-        public static Roll zero()
+        public static Roll Zero()
         {
             return new Roll(0);
         }

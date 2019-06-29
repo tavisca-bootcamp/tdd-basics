@@ -4,25 +4,25 @@ namespace Rolls
     {
         private Roll []roll;
 
-        public Roll[] rollParser(string rolls)
+        public Roll[] ParseRoll(string rolls)
         {
             int i, len = rolls.Length;
             roll = new Roll[len];
             for(i = 0; i < len; i++)
             {
-                roll[i] = createRoll(i, rolls);
+                roll[i] = CreateRoll(i, rolls);
             }
             return roll;
         }
 
-        private Roll createRoll(int pos, string rolls)
+        private Roll CreateRoll(int pos, string rolls)
         {
-            int points = getPoints(pos, rolls);
+            int points = GetPoints(pos, rolls);
             Roll roll = new Roll(points);
             return roll;
         }
 
-        public int getPoints(int pos, string rolls)
+        public int GetPoints(int pos, string rolls)
         {
             char c = rolls[pos];
             if(c == Roll.strike)
@@ -31,7 +31,7 @@ namespace Rolls
             }
             if(c == Roll.spare)
             {
-                return 10 - getPoints(pos - 1, rolls);
+                return 10 - GetPoints(pos - 1, rolls);
             }
             if(c == Roll.emptyRoll)
             {

@@ -15,7 +15,7 @@ namespace Frames
         public Frame(Roll one)
         {
             this.one = one;
-            this.two = Roll.zero();
+            this.two = Roll.Zero();
             this.strike = true;
         }
 
@@ -23,28 +23,28 @@ namespace Frames
         {
             this.one = one;
             this.two = two;
-            if(one.getNumberOfKnockedPins() + two.getNumberOfKnockedPins() == 10)
+            if(one.GetNumberOfKnockedPins() + two.GetNumberOfKnockedPins() == 10)
             {
                 this.spare = true;
             }
         }
 
-        public int getNumberOfKnockedPinsInRollOne()
+        public int GetNumberOfKnockedPinsInRollOne()
         {
-            return one.getNumberOfKnockedPins();
+            return one.GetNumberOfKnockedPins();
         }
 
-        public int getTotalKnockedPins()
+        public int GetTotalKnockedPins()
         {
-            return one.getNumberOfKnockedPins() + two.getNumberOfKnockedPins();
+            return one.GetNumberOfKnockedPins() + two.GetNumberOfKnockedPins();
         }
 
-        public bool isSpare()
+        public bool IsSpare()
         {
             return spare;
         }
 
-        public bool isStrike()
+        public bool IsStrike()
         {
             return strike;
         }
