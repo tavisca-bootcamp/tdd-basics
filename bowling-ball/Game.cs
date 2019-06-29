@@ -7,12 +7,12 @@ namespace BowlingBall
         public int score = 0;
         public void Roll(int pins)
         {
-            score += pins;
+            //Needed to be implemented
         }
 
         public int GetScore()
         {
-            return score;
+            return 0;
         }
 
     }

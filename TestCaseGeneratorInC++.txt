@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    freopen("input1.txt","w+",stdout);
+
+
+
+
+    for(int t=3;t<14;t++){
+            int ar[20]={0},index=0;
+        for(int i=0;i<10;)
+        {
+            //srand(time(0));
+            int a=rand()%10;
+            int b=rand()%10;
+            if(a+b<=10){
+                i++;
+                ar[index++]=a;
+                ar[index++]=b;
+            }
+        }
+        cout<<"[Fact]"<<endl;
+        cout<<"public void TestCase"<<t<<"()"<<endl<<"{"<<endl;
+        for(int i=0;i<20;i++)
+            cout<<"g.Roll("<<ar[i]<<")"<<";"<<endl;
+        cout<<"Assert.Equal(0, g.GetScore());";
+        cout<<endl<<"}"<<endl<<endl;
+    }
+    return 0;
+}
