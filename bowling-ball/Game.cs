@@ -11,14 +11,14 @@ namespace BowlingBall
 
         public void RollSinglePin(int pins)
         {
-            roll[presentIndex]=pins;
+            roll[presentframeIndex]=pins;
             presentframeIndex++;
         }
         public void RollMultiplePin(int []pins)
         {
             for(int i=0;i<pins.Length;i++)
             {
-                roll[presentIndex]=pins[i];
+                roll[presentframeIndex]=pins[i];
                 presentframeIndex++;
             }
         }
