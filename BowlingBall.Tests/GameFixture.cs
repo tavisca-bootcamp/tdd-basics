@@ -14,6 +14,16 @@ namespace BowlingBall.Tests
             for (int i = 0; i < n; i++)
                 g.Roll(pins);
         }
+        private void RollStrike()
+        {
+            g.Roll(10);
+        }
+
+        private void RollSpare()
+        {
+            g.Roll(5);
+            g.Roll(5);
+        }
 
         [Fact]
         public void TestGutterGame()
@@ -34,14 +44,19 @@ namespace BowlingBall.Tests
         {
             RollSpare();
             g.Roll(3);
-            RollMany(17,0);
+            RollMany(17, 0);
             Assert.Equal(16, g.GetScore());
         }
 
-        private void RollSpare()
+        [Fact]
+        public void TestOneStrike()
         {
-            g.Roll(5);
-            g.Roll(5);
+            RollStrike();
+            g.Roll(3);
+            g.Roll(4);
+            RollMany(16, 0);
+            Assert.Equal(24, g.GetScore());
         }
+
     }
 }
