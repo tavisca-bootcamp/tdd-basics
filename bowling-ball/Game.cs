@@ -21,9 +21,17 @@ namespace BowlingBall
             int j = 0, x = 0;
             for(int i=0;i<10;i++)
             {
-                frame[i]=x+score[j]+score[j+1];
-                j = j + 2;
-                x = frame[i];
+                if (score[j] + score[j + 1] == 1)
+                {
+                    frame[i] = x + 10 + score[j + 2];
+                    j = j + 2;
+                }
+                else
+                {
+                    frame[i] = x + score[j] + score[j + 1];
+                    j = j + 2;
+                }
+                    x = frame[i];
             }
             return frame[9];
             throw new NotImplementedException();
