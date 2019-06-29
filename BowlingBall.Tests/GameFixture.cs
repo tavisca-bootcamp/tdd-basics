@@ -7,11 +7,6 @@ namespace BowlingBall.Tests
     {
         private Game game=new Game();
 
-        public void Gamefixture()
-        {
-            game =new Game();
-        }
-
         public void RollMany(int nRolls,int pins)
         {
             for (int i = 0; i < nRolls; i++)
