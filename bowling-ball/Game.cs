@@ -1,12 +1,13 @@
 ﻿using System;
-
 namespace BowlingBall
 {
     public class Game
     {
-        int []roll = new int[21];
-        int []frames=new int[10];
-        int presentframeIndex=0;
+       public  int []roll = new int[21];
+        private int[] frames = new int[10];
+        public int presentframeIndex=0;
+
+        public global::System.Int32[] Frames { get => frames; set => frames = value; }
 
         public void RollSinglePin(int pins)
         {
