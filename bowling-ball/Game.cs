@@ -11,7 +11,6 @@ namespace BowlingBall
         {
             rolls[currentRoll++] = pins;
             
-            throw new NotImplementedException();
         }
 
         public void Roll(int[] pins)
