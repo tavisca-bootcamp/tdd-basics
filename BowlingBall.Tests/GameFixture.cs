@@ -79,7 +79,12 @@ namespace BowlingBall.Tests
             RollSame(21, 5);
             Assert.Equal(150, g.GetScore());
         }
-        
+        [Fact]
+        public void TestAllStrike()
+        {
+            RollSame(12, 10);
+            Assert.Equal(300, g.GetScore());
+        }
         private void RollSame(int rollsCount, int pins)
         {
             for (int i = 0; i < rollsCount; i++)
