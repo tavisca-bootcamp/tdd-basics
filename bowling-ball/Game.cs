@@ -4,14 +4,14 @@ namespace BowlingBall
 {
     public class Game
     {
-        public void Roll(int pins)
+        public void RollFrame(int roll1, int roll2)
         {
-            throw new NotImplementedException();
+           
         }
 
         public int GetScore()
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
     }

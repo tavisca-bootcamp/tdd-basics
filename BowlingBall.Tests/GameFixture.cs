@@ -6,9 +6,14 @@ namespace BowlingBall.Tests
     {
 
         [Fact]
-        public void DummyTest()
+        public void AllGutterBalls()
         {
-            Assert.True(true);  
+            var game = new Game();
+            for(int frame = 1; frame <= 10; frame++)
+            {
+                game.RollFrame(0, 0);
+            }
+            Assert.Equal(0, game.GetScore());
         }
     }
 }
