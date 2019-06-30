@@ -4,14 +4,14 @@ namespace BowlingBall
 {
     public class Game
     {
-        public const int MAX_BALLS = 21;
-        public int[] rolls = new int[MAX_BALLS];
-        int countRoll = 0;
+        private const int MAX_BALLS = 21; // In 10th frame we can have 3 balls so 21 balls at max.
+        private int[] rolls = new int[MAX_BALLS]; // This will shows pins knocked down by player.
+        int countRoll = 0; // This will fill up the rolls array.
 
         private bool IsSpare(int RollIndex) {
             if(rolls[RollIndex] + rolls[RollIndex + 1] == 10)
                 return true;
-            return false;
+            return false; 
         }
 
         private bool IsStrike(int RollIndex)
@@ -29,7 +29,7 @@ namespace BowlingBall
         public int GetScore()
         {
             int score = 0;
-            int RollIndex = 0;
+            int RollIndex = 0; // will take care of indexing to calculate score
             for (int frame = 0; frame < 10; frame++)
             {
                 if(IsSpare(RollIndex))
@@ -60,7 +60,7 @@ namespace BowlingBall
                     return -1;
             }
             
-            return score;
+            return score; 
         }
 
     }

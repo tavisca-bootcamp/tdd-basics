@@ -80,7 +80,7 @@ namespace BowlingBall.Tests
         [Fact]
         public void TestGameWithInvalidExtraBall()
         {
-            int[] pinsDown = { 2,8,5,4,10,10,5,5,3,2,6,3,10,2,7,1,3,3};
+            int[] pinsDown = { 2,8,5,4,10,10,5,5,3,2,6,3,10,2,7,1,3,3}; // no spare and strike but 3rd ball is given in 10th frame.
             for (int i = 0; i < pinsDown.Length; i++)
                 g.Roll(pinsDown[i]);
             Assert.Equal(-1, g.GetScore());
