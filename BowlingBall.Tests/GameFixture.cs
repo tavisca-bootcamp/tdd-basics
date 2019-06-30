@@ -58,6 +58,16 @@ namespace BowlingBall.Tests
                 obj.Roll(testcase[i]);
             Assert.Equal(100, obj.GetScore());
         }
+        [Fact]
+        public void StrikeZeroSpare() //starts with a srike in middle gutter balls and ends with spare
+        {
+            int[] testcase = new int[18] { 10, 0, 0, 10, 10, 0, 0, 4, 1, 5, 2, 5, 5, 1, 4, 8, 2, 5 };
+
+            for (int i = 0; i < 18; i++)
+                obj.Roll(testcase[i]);
+            Assert.Equal(83, obj.GetScore());
+        }
+
 
 
     }
