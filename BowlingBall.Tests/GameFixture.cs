@@ -6,6 +6,8 @@ namespace BowlingBall.Tests
     public class GameFixture
     {
         private Game game;
+        
+        // Constuctor
         public GameFixture()
         {
             game = new Game();
