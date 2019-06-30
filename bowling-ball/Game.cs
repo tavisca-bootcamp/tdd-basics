@@ -4,7 +4,7 @@ namespace BowlingBall
 {
     public class Game
     {
-        private int[] Rolls = new int[21];
+        int[] Rolls = new int[21];
 
         public void Roll(int[] pins)
         {
