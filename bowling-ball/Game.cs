@@ -16,6 +16,7 @@ namespace BowlingBall
         {
             if (frames.Count == 10)
             {
+                Console.WriteLine(frames.Count);
                 throw new IndexOutOfRangeException();
             }
             frames.Add(frame);
@@ -47,7 +48,7 @@ namespace BowlingBall
 
         public int GetScore()
         {
-            for(int currentFrame = 0; currentFrame < frames.Count; currentFrame++)
+            for(var currentFrame = 0; currentFrame < frames.Count; currentFrame++)
     {
                 var frame = (Frame)frames[currentFrame];
                 score += (frame.TotalRoll());

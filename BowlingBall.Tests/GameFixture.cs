@@ -19,14 +19,14 @@ namespace BowlingBall.Tests
         }
 
         [Fact]
-        public void All2sShouldScore40()
+        public void All2s()
         {
             RollFrames(2, 2,10);
             Assert.Equal(40, game.GetScore());
         }
 
         [Fact]
-        public void FirstFrameSpareRest2s()
+        public void FirstFrameSpare()
         {
             game.RollSpare(2, 8);
             RollFrames(2, 2, 9);
@@ -34,7 +34,7 @@ namespace BowlingBall.Tests
         }
 
         [Fact]
-        public void FirstTwoFramesSpareRest2sShouldScore56()
+        public void FirstTwoFramesSpare()
         {
             game.RollSpare(2, 8);
             game.RollSpare(2, 8);
@@ -43,13 +43,13 @@ namespace BowlingBall.Tests
         }
 
         [Fact]
-        public void TryingToBowlMoreThan10FramesThrowsOutOfFramesException()
+        public void BowlMoreThan10Frames()
         {
             Exception ex = Assert.Throws<IndexOutOfRangeException>(() => RollFrames(2, 2, 11));
         }
 
         [Fact]
-        public void FirstFrameStrikeRest2sShouldScore50()
+        public void FirstFrameStrike()
         {
             game.RollStrike();
             RollFrames(2, 2, 9);
@@ -57,7 +57,7 @@ namespace BowlingBall.Tests
         }
 
         [Fact]
-        public void FirstTwoFramesStrikesRest2sShouldScore68()
+        public void FirstTwoFramesStrikes()
         {
             game.RollStrike();
             game.RollStrike();
@@ -67,9 +67,9 @@ namespace BowlingBall.Tests
 
 
         [Fact]
-        public void PerfectGameShouldTotal300()
+        public void PerfectGame()
         {
-            for (int i = 1; i <= 9; i++)
+            for (var i = 1; i <= 9; i++)
             {
                 game.RollStrike();
             }
@@ -77,9 +77,29 @@ namespace BowlingBall.Tests
             Assert.Equal(300, game.GetScore());
         }
 
+        [Fact]
+        public void RandomGame()
+        {
+            game.RollSpare(3, 7);
+            for (var i = 0; i < 4; i++)
+                game.RollFrame(i, i + 1);
+            for (var j = 4; j >0; j--)
+                game.RollFrame(j, j + 1);
+            game.RollTenthFrame(10, 10, 10);
+
+            Assert.Equal(80, game.GetScore());
+        }
+
+        [Fact]
+        public void LastFrameStrike()
+        {
+            RollFrames(2, 2, 9);
+            game.RollTenthFrame(10,10,10);
+            Assert.Equal(66, game.GetScore());
+        }
         private void RollFrames(int roll1,int roll2,int numberOfFrames)
         {
-            for(int frame = 0; frame < numberOfFrames; frame++)
+            for(var frame = 0; frame < numberOfFrames; frame++)
             {
                 game.RollFrame(roll1, roll2);
             }
