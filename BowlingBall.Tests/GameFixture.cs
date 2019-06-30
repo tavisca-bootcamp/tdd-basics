@@ -46,6 +46,15 @@ namespace BowlingBall.Tests
             RollSame(10, 1);
             Assert.Equal(31, g.GetScore());
         }
+        [Fact]
+        public void TestSpareInLastFrame()
+        {
+            RollSame(18, 0);
+            g.Roll(5);
+            g.Roll(5);
+            g.Roll(2);
+            Assert.Equal(12, g.GetScore());
+        }
         private void RollSame(int rollsCount, int pins)
         {
             for (int i = 0; i < rollsCount; i++)
