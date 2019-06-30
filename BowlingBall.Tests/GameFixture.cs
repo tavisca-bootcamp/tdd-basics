@@ -49,6 +49,16 @@ namespace BowlingBall.Tests
                 obj.Roll(testcase[i]);
             Assert.Equal(88, obj.GetScore());
         }
+        [Fact]
+        public void SpareStrikeZero() //starts with a spare in middle strikes and ends with gutter balls
+        {
+            int[] testcase = new int[17] { 5, 5, 1, 2, 7, 3, 5, 0, 10, 10, 2, 1, 10, 9, 0, 0, 0 };
+
+            for (int i = 0; i < 17; i++)
+                obj.Roll(testcase[i]);
+            Assert.Equal(100, obj.GetScore());
+        }
+
 
     }
 }
