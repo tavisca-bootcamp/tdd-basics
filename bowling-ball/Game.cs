@@ -27,14 +27,13 @@ namespace BowlingBall
 
         public void RollSpare(int roll1, int roll2)
         {
-            var frame = new Frame(roll1, roll2);
-            frame.isSpare=true;
-            frames.Add(frame);
+            var spare = new Spare(roll1, roll2);
+            AddFrame(spare);
         }
 
         public void RollStrike()
         {
-            Strike strike = new Strike();
+            var strike = new Strike();
             AddFrame(strike);
         }
 
