@@ -42,7 +42,13 @@ namespace BowlingBall.Tests
             Assert.Equal(56, game.GetScore());
         }
 
-            private void RollFrames(int roll1,int roll2,int numberOfFrames)
+        [Fact]
+        public void TryingToBowlMoreThan10FramesThrowsOutOfFramesException()
+        {
+            Exception ex = Assert.Throws<IndexOutOfRangeException>(() => RollFrames(2, 2, 11));
+        }
+
+        private void RollFrames(int roll1,int roll2,int numberOfFrames)
         {
             for(int frame = 0; frame < numberOfFrames; frame++)
             {

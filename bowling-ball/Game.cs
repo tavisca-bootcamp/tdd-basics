@@ -11,9 +11,18 @@ namespace BowlingBall
             frames = new ArrayList();
         }
 
+        private void AddFrame(Frame frame)
+        {
+            if (frames.Count == 10)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            frames.Add(frame);
+        }
+
         public void RollFrame(int roll1, int roll2)
         {
-            frames.Add(new Frame(roll1, roll2));
+            AddFrame(new Frame(roll1, roll2));
         }
 
         public void RollSpare(int roll1, int roll2)
