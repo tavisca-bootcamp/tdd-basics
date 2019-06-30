@@ -18,10 +18,16 @@ namespace BowlingBall.Tests
             Assert.Equal(300, g.GetScore());
         }
         [Fact]
-        public void TestAllTheStrikes()
+        public void TestAllZero()
         {
-            g.Roll(new[] { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 });
-            Assert.Equal(300, g.GetScore());
+            g.Roll(new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            Assert.Equal(0, g.GetScore());
+        }
+        [Fact]
+        public void TestOneStrike()
+        {
+            g.Roll(new[] { 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            Assert.Equal(10, g.GetScore());
         }
 
     }
