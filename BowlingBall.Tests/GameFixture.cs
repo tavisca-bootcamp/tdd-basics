@@ -56,6 +56,15 @@ namespace BowlingBall.Tests
             Assert.Equal(50, game.GetScore());
         }
 
+        [Fact]
+        public void FirstTwoFramesStrikesRest2sShouldScore68()
+        {
+            game.RollStrike();
+            game.RollStrike();
+            RollFrames(2, 2, 8);
+            Assert.Equal(68, game.GetScore());
+        }
+
         private void RollFrames(int roll1,int roll2,int numberOfFrames)
         {
             for(int frame = 0; frame < numberOfFrames; frame++)

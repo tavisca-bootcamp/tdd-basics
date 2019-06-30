@@ -51,7 +51,16 @@ namespace BowlingBall
                 else if (frame.isStrike)
                 {
                     var nextFrame = (Frame)frames[currentFrame + 1];
-                    score += nextFrame.TotalRoll();
+                    score += nextFrame.Roll1;
+                    if (nextFrame.isStrike)
+                    {
+                        var thirdFrame = (Frame)frames[currentFrame + 2];
+                        score += thirdFrame.Roll1;
+                    }
+                    else
+                    {
+                        score += nextFrame.Roll2;
+                    }
                 }
             }
             return score;
