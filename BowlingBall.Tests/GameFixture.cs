@@ -29,6 +29,13 @@ namespace BowlingBall.Tests
             RollSame(17, 1); // Act
             Assert.Equal(37, g.GetScore()); //Assert
         }
+        [Fact]
+        public void TestStrike()
+        {
+            g.Roll(10);
+            RollSame(18, 1);
+            Assert.Equal(30, g.GetScore());
+        }
         private void RollSame(int rollsCount, int pins)
         {
             for (int i = 0; i < rollsCount; i++)

@@ -18,11 +18,24 @@ namespace BowlingBall
             int roll = 0;
             for (int frame = 1; frame <= 10; frame++)
             {
-                if (IsSpare(roll))
+                if(IsStrike(roll))// strike bonus 2 next rolls so first check for strike.
+                {
+                    score += 10 + Rolls[roll + 1] + Rolls[roll + 2];
+                    roll++;
+                }
+                else if (IsSpare(roll))
+                {
                     score += 10 + Rolls[roll + 2];
+                    roll += 2;
+                }
+                    
                 else
+                {
                     score += Rolls[roll] + Rolls[roll + 1];
-                roll += 2; //jump to next frame;
+                    roll += 2;
+                }
+
+                
             }
             return score;
         }
@@ -30,6 +43,10 @@ namespace BowlingBall
         private bool IsSpare(int roll)
         {
             return Rolls[roll] + Rolls[roll + 1] == 10;
+        }
+        private bool IsStrike(int roll)
+        {
+            return Rolls[roll] == 10;
         }
 
     }
