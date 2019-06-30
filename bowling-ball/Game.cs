@@ -27,11 +27,11 @@ namespace BowlingBall
         {
             for(int currentFrame = 0; currentFrame < frames.Count; currentFrame++)
     {
-                Frame frame = (Frame)frames[currentFrame];
-                score += (frame.Roll1 + frame.Roll2);
+                var frame = (Frame)frames[currentFrame];
+                score += (frame.TotalRoll());
                 if (frame.isSpare)
                 {
-                    Frame nextFrame = (Frame)frames[currentFrame + 1];
+                    var nextFrame = (Frame)frames[currentFrame + 1];
                     score += nextFrame.Roll1;
                 }
             }

@@ -18,5 +18,11 @@ namespace BowlingBall
         {
             isSpare = value;
         }
+        public int TotalRoll()
+        {
+            return roll1 + roll2;
+        }
+
+
     }
 }
