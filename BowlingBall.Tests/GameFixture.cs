@@ -180,94 +180,81 @@ namespace BowlingBall.Tests
 
             Assert.Equal(78, g.GetScore());
         }
-        //Yet to implement logic
-        /*
-        
-
-        
 
         [Fact]
-        public void TestCase10()
+        public void AllStrikes()
         {
-            g.Roll(10);
+            g.Roll(10);//1
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//2
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//3
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//4
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//5
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//6
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//7
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//8
             g.Roll(0);
 
-            g.Roll(10);
+            g.Roll(10);//9
             g.Roll(0);
 
-            g.Roll(10);
-            g.Roll(0);
-
-            g.Roll(10);
-            g.Roll(0);
-
-            g.Roll(10);
+            g.Roll(10);//10
             g.Roll(0);
             g.Roll(10);
             Assert.Equal(300, g.GetScore());
         }
-        
-        
 
         [Fact]
-        public void TestCase12()
+        public void AllSpares()
         {
+            g.Roll(8);
             g.Roll(2);
-            g.Roll(5);
-
-            g.Roll(2);
-            g.Roll(5);
-
-            g.Roll(2);
-            g.Roll(2);
-
-            g.Roll(1);
-            g.Roll(9);
 
             g.Roll(8);
             g.Roll(2);
 
-            g.Roll(5);
-            g.Roll(5);
-
-            g.Roll(1);
+            g.Roll(8);
             g.Roll(2);
 
-            g.Roll(5);
-            g.Roll(0);
+            g.Roll(8);
+            g.Roll(2);
 
-            g.Roll(3);
-            g.Roll(5);
+            g.Roll(8);
+            g.Roll(2);
+
+            g.Roll(8);
+            g.Roll(2);
+
+            g.Roll(8);
+            g.Roll(2);
+
+            g.Roll(8);
+            g.Roll(2);
+
+            g.Roll(8);
+            g.Roll(2);
 
             g.Roll(8);
             g.Roll(2);
             g.Roll(5);
-            Assert.Equal(94, g.GetScore());
+            Assert.Equal(182, g.GetScore());
         }
 
         [Fact]
-        public void TestCase13()
+        public void SparesAndStrikes()
         {
             g.Roll(5);
             g.Roll(4);
@@ -301,6 +288,19 @@ namespace BowlingBall.Tests
 
             Assert.Equal(105, g.GetScore());
         }
+        //Yet to implement logic
+        /*
+        
+
+        
+
+        
+        
+        
+
+        
+
+        
 
         */
 
