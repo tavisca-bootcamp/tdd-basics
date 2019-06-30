@@ -7,6 +7,7 @@ namespace BowlingBall
         private int roll2;
         public bool isSpare = false;
         public bool isStrike = false;
+        protected int bonusRoll;
         public Frame(int roll1,int roll2)
         {
             this.roll1 = roll1;
@@ -17,7 +18,13 @@ namespace BowlingBall
 
         public int TotalRoll()
         {
-            return roll1 + roll2;
+            return roll1 + roll2+bonusRoll;
+        }
+
+        public int BonusRoll
+        {
+            get { return bonusRoll; }
+            set { bonusRoll = value; }
         }
 
 

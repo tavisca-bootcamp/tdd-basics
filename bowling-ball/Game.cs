@@ -37,6 +37,13 @@ namespace BowlingBall
             AddFrame(strike);
         }
 
+        public void RollTenthFrame(int roll1, int roll2, int roll3)
+        {
+            var frame = new Frame(roll1, roll2);
+            frame.BonusRoll = roll3;
+            AddFrame(frame);
+        }
+
         public int GetScore()
         {
             for(int currentFrame = 0; currentFrame < frames.Count; currentFrame++)

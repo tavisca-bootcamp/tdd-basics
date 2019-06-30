@@ -65,6 +65,18 @@ namespace BowlingBall.Tests
             Assert.Equal(68, game.GetScore());
         }
 
+
+        [Fact]
+        public void PerfectGameShouldTotal300()
+        {
+            for (int i = 1; i <= 9; i++)
+            {
+                game.RollStrike();
+            }
+            game.RollTenthFrame(10, 10, 10);
+            Assert.Equal(300, game.GetScore());
+        }
+
         private void RollFrames(int roll1,int roll2,int numberOfFrames)
         {
             for(int frame = 0; frame < numberOfFrames; frame++)
