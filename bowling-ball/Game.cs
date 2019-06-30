@@ -7,6 +7,7 @@ namespace BowlingBall
         public const int MAX_BALLS = 21;
         public int[] rolls = new int[MAX_BALLS];
         int countRoll = 0;
+
         private bool IsSpare(int RollIndex) {
             if(rolls[RollIndex] + rolls[RollIndex + 1] == 10)
                 return true;
@@ -35,7 +36,7 @@ namespace BowlingBall
                 {
                     score += 10 + rolls[RollIndex + 2];
                     RollIndex += 2;
-                }
+                } 
                 else if(IsStrike(RollIndex))
                 {
                     score += 10 + rolls[RollIndex + 1] + rolls[RollIndex + 2];
@@ -47,6 +48,16 @@ namespace BowlingBall
                     RollIndex += 2;
                 }
                 
+            }
+
+            if(RollIndex != countRoll)
+            {
+                if (IsStrike(RollIndex - 1) || IsSpare(RollIndex - 2))
+                {
+
+                }
+                else
+                    return -1;
             }
             
             return score;

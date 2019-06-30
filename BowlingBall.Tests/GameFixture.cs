@@ -5,6 +5,14 @@ namespace BowlingBall.Tests
     public class GameFixture
     {
         Game g = new Game();
+
+
+        [Fact]
+        public void TestGameObjectNotNullCheck()
+        {
+            Assert.NotNull(g);
+        }
+
         [Fact]
         public void TestGameWithOutOfRangePinValues()
         {
@@ -63,10 +71,19 @@ namespace BowlingBall.Tests
         [Fact]
         public void TestGameWithStrikeInEndCaseOfExtraBall()
         {
-            int[] pinsDown = {2,4,10,2,6,4,6,3,4,0,0,1,3,5,5,10,10,4,3};
+            int[] pinsDown = { 2, 4, 10, 2, 6, 4, 6, 3, 4, 0, 0, 1, 3, 5, 5, 10, 10, 4, 3 };
             for (int i = 0; i < pinsDown.Length; i++)
                 g.Roll(pinsDown[i]);
             Assert.Equal(117, g.GetScore());
+        }
+
+        [Fact]
+        public void TestGameWithInvalidExtraBall()
+        {
+            int[] pinsDown = { 2,8,5,4,10,10,5,5,3,2,6,3,10,2,7,1,3,3};
+            for (int i = 0; i < pinsDown.Length; i++)
+                g.Roll(pinsDown[i]);
+            Assert.Equal(-1, g.GetScore());
         }
 
 
