@@ -25,6 +25,14 @@ namespace BowlingBall.Tests
             Assert.Equal(40, game.GetScore());
         }
 
+        [Fact]
+        public void FirstFrameSpareRest2s()
+        {
+            game.RollSpare(2, 8);
+            RollFrames(2, 2, 9);
+            Assert.Equal(48, game.GetScore());
+        }
+
         private void RollFrames(int roll1,int roll2,int numberOfFrames)
         {
             for(int frame = 0; frame < numberOfFrames; frame++)
