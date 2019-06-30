@@ -5,6 +5,7 @@ namespace BowlingBall
     {
         private int roll1;
         private int roll2;
+        public bool isSpare = false;
         public Frame(int roll1,int roll2)
         {
             this.roll1 = roll1;
@@ -12,5 +13,10 @@ namespace BowlingBall
         }
         public int Roll1 { get { return roll1; } }
         public int Roll2 { get { return roll2; } }
+
+        public void IsSpare(bool value)
+        {
+            isSpare = value;
+        }
     }
 }
