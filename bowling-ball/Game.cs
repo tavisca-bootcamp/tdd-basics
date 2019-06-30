@@ -6,6 +6,7 @@ namespace BowlingBall
     {
         private int score = 0;
         private ArrayList frames;
+
         public Game()
         {
             frames = new ArrayList();
@@ -40,7 +41,7 @@ namespace BowlingBall
         public void RollTenthFrame(int roll1, int roll2, int roll3)
         {
             var frame = new Frame(roll1, roll2);
-            frame.BonusRoll = roll3;
+            frame.bonusRoll = roll3;
             AddFrame(frame);
         }
 
