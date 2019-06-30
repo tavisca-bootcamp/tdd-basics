@@ -6,9 +6,14 @@ namespace BowlingBall
     {
         private int[] Rolls = new int[21];
 
-        public void Roll(int pins)
+        public void Roll(int[] pins)
         {
-            throw new NotImplementedException();
+            int i=0;
+            foreach(int iterator in pins)
+            {
+                Rolls[i]=iterator;
+                i=i+1;
+            }
         }
 
         public int GetScore()
