@@ -14,7 +14,7 @@ namespace BowlingBall.Tests
         [Fact]
         public void TotalZeroScore() {
             Game game = new Game();
-            int[] rolls = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            int[] rolls = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0 };
             game.MultipleRolls(rolls);
             int score = game.GetScore();
             Assert.Equal(0, score);
