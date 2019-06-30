@@ -14,6 +14,10 @@ namespace BowlingBall
         {
             return score;
         }
+        public void RollSpare(int roll1,int roll2)
+        {
+
+        }
 
     }
 }
