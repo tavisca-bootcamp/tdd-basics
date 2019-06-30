@@ -48,6 +48,14 @@ namespace BowlingBall.Tests
             Exception ex = Assert.Throws<IndexOutOfRangeException>(() => RollFrames(2, 2, 11));
         }
 
+        [Fact]
+        public void FirstFrameStrikeRest2sShouldScore50()
+        {
+            game.RollStrike();
+            RollFrames(2, 2, 9);
+            Assert.Equal(50, game.GetScore());
+        }
+
         private void RollFrames(int roll1,int roll2,int numberOfFrames)
         {
             for(int frame = 0; frame < numberOfFrames; frame++)

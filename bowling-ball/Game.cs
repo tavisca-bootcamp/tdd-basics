@@ -28,8 +28,14 @@ namespace BowlingBall
         public void RollSpare(int roll1, int roll2)
         {
             var frame = new Frame(roll1, roll2);
-            frame.IsSpare(true);
+            frame.isSpare=true;
             frames.Add(frame);
+        }
+
+        public void RollStrike()
+        {
+            Strike strike = new Strike();
+            AddFrame(strike);
         }
 
         public int GetScore()
@@ -42,6 +48,11 @@ namespace BowlingBall
                 {
                     var nextFrame = (Frame)frames[currentFrame + 1];
                     score += nextFrame.Roll1;
+                }
+                else if (frame.isStrike)
+                {
+                    var nextFrame = (Frame)frames[currentFrame + 1];
+                    score += nextFrame.TotalRoll();
                 }
             }
             return score;
