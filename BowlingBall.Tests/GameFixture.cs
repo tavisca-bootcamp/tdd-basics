@@ -26,6 +26,15 @@ namespace BowlingBall.Tests
             Assert.Equal(0, score);
         }
 
+        [Fact]
+        public void AllOnesTest()
+        {
+            Roll(1, 20);
+            int score = _game.GetScore();
+
+            Assert.Equal(20, score);
+        }
+
         private void Roll(int pins, int times)
         {
             for (int i = 0; i < times; i++)
