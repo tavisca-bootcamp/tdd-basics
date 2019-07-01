@@ -7,15 +7,11 @@ namespace BowlingBall
     public class BowlingUtility
     {
         Game game;
-        public BowlingUtility()
-        {
-            game = new Game();
-        }
+        public BowlingUtility() => game = new Game();
+        
 
-        public int GetScore()
-        {
-            return game.GetScore();
-        }
+        public int GetScore() => game.GetScore();
+        
 
         public void RollingASpare(int firstRollPins)
         {
