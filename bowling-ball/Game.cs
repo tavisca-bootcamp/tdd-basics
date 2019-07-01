@@ -21,13 +21,13 @@ namespace BowlingBall
             for (int i = 0; i < 10; i++) {
                 if (IsStrike(FrameIndex)) {
                     score = score + 10 + StrikeBonus(FrameIndex);
-                    FrameIndex = FrameIndex + 1;
+                    FrameIndex = FrameIndex + 1;//in a strike, there is only one roll per frame, the increment value is 1
                 } else if (IsSpare(FrameIndex)) {
                     score =score + 10 + SpareBonus(FrameIndex);
-                    FrameIndex = FrameIndex + 2;
+                    FrameIndex = FrameIndex + 2;//a spare in when the pins are knocked down in two rolls, hence 2 is the increment value
                 } else {
                     score = score + SumOfBallsInFrame(FrameIndex);
-                    FrameIndex = FrameIndex + 2;
+                    FrameIndex = FrameIndex + 2;//in a neither a spare nor a strike case, two rolls are done per frame, hence 2 is the increment value
                 }
             }
             return score;

@@ -20,7 +20,7 @@ namespace BowlingBall.Tests
         [Fact]
         public void TestAllZero()
         {
-            newGame.SetRoll(new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+            newGame.SetRoll(new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0 });
             Assert.Equal(0, newGame.GetScore());
         }
         [Fact]
