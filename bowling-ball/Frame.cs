@@ -3,20 +3,20 @@ namespace BowlingBall
 {
     public class Frame
     {
-        public int Roll1;
-        public int Roll2;
+        public int tryRoll1;
+        public int tryRoll2;
         public bool isSpare = false;
         public bool isStrike = false;
         public int bonusRoll;
         public Frame(int roll1,int roll2)
         {
-            this.Roll1 = roll1;
-            this.Roll2 = roll2;
+            this.tryRoll1 = roll1;
+            this.tryRoll2 = roll2;
         }
 
         public int TotalRoll()
         {
-            return Roll1 + Roll2 + bonusRoll;
+            return tryRoll1 + tryRoll2 + bonusRoll;
         }
 
     }
