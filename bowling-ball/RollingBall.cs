@@ -4,10 +4,10 @@ using System.Text;
 
 namespace BowlingBall
 {
-    public class RollingBall
+    public class BowlingUtility
     {
         Game game;
-        public RollingBall()
+        public BowlingUtility()
         {
             game = new Game();
         }
@@ -15,7 +15,6 @@ namespace BowlingBall
         public int GetScore()
         {
             return game.GetScore();
-            throw new NotImplementedException();
         }
 
         public void RollingASpare(int firstRollPins)
@@ -24,10 +23,8 @@ namespace BowlingBall
             game.Roll(10 - firstRollPins);
         }
 
-        public void RollingAStrike()
-        {
-            game.Roll(10);
-        }
+        public void RollingAStrike() => game.Roll(10);
+        
         public void RollsManyTimes(int pins, int n)
         {
             for (int i = 0; i < n; i++)
@@ -35,13 +32,9 @@ namespace BowlingBall
                 game.Roll(pins);
             }
         }
-        public void RollsNormal(int pins)
-        {
-            game.Roll(pins);
-        }
-        public void RollsNothing()
-        {
-            game.Roll(0);
-        }
+        public void RollsNormal(int pins) => game.Roll(pins);
+        
+        public void RollsNothing() => game.Roll(0);
+        
     }
 }

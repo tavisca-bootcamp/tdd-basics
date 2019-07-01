@@ -4,13 +4,21 @@ namespace BowlingBall
 {
     public class Game
     {
-        private int _score = 0;
-        private int[] _rolling = new int[21];
-        private int _currentRoll = 0;
+        int maxRollPossible = 21;
+        public int TotalScore { get; set; }
+        public int[]  ScoreOfEachRoll { get; set; }
+        public int currentRollIndex { get; set; }
 
+        public Game()
+        {
+            TotalScore = 0;
+            ScoreOfEachRoll = new int[maxRollPossible];
+            currentRollIndex = 0;
+
+        }
         public void Roll(int pins)
         {
-            _rolling[_currentRoll++] = pins;
+            ScoreOfEachRoll[currentRollIndex++] = pins;
         }
 
         public int GetScore()
@@ -19,21 +27,21 @@ namespace BowlingBall
             for (int frame = 0; frame < 10; frame++, _rollIndex += 2)
             {
                 if (IsSpare(_rollIndex))
-                    _score += 10 + GetSpareBonus(_rollIndex);
+                    TotalScore += 10 + GetSpareBonus(_rollIndex);
                 else if (IsStrike(_rollIndex))
                 {
-                    _score += 10 + GetStrikeBonus(_rollIndex);
+                    TotalScore += 10 + GetStrikeBonus(_rollIndex);
                     _rollIndex--;
                 }
                 else
-                    _score += _rolling[_rollIndex] + _rolling[_rollIndex + 1];
+                    TotalScore += ScoreOfEachRoll[_rollIndex] + ScoreOfEachRoll[_rollIndex + 1];
             }
-            return _score;
+            return TotalScore;
             throw new NotImplementedException();
         }
         public bool IsSpare(int rollIndex)
         {
-            if(_rolling[rollIndex] + _rolling[rollIndex + 1] == 10)
+            if(ScoreOfEachRoll[rollIndex] + ScoreOfEachRoll[rollIndex + 1] == 10)
                 return true;
             else 
                 return false;
@@ -41,7 +49,7 @@ namespace BowlingBall
 
         public bool IsStrike(int rollIndex)
         {
-            if (_rolling[rollIndex] == 10)
+            if (ScoreOfEachRoll[rollIndex] == 10)
                 return true;
             else
                 return false;
@@ -49,11 +57,11 @@ namespace BowlingBall
 
         public int GetSpareBonus(int rollIndex)
         {
-            return _rolling[rollIndex + 2];
+            return ScoreOfEachRoll[rollIndex + 2];
         }
         public int GetStrikeBonus(int rollIndex)
         {
-            return _rolling[rollIndex + 1] + _rolling[rollIndex + 2];
+            return ScoreOfEachRoll[rollIndex + 1] + ScoreOfEachRoll[rollIndex + 2];
         }
     }
 }

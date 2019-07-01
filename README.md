@@ -4,7 +4,7 @@ The idea of this repository is to contain a minimal setup for executing the [Unc
 
 ## The Bowling Score
 
-![Example Score](bowling_scoresheet_example.png)
+![Example Score](bowlingTotalScoresheet_example.png)
 
 The game consists of 10 frames as shown above.  In each frame the player has
 two opportunities to knock down 10 pins.  The score for the frame is the total
