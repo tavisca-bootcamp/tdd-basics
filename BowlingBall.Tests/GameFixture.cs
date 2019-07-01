@@ -35,16 +35,16 @@ namespace BowlingBall.Tests
             Assert.Equal(20, score);
         }
 
-        //[Fact]
-        //public void OneSpareTest()
-        //{
-        //    _game.Roll(4);
-        //    _game.Roll(6);
-        //    _game.Roll(4);
-        //    RollNTImes(0, 17);
+        [Fact]
+        public void OneSpareTest()
+        {
+            _game.Roll(4);
+            _game.Roll(6);
+            _game.Roll(4);
+            RollNTImes(0, 17);
 
-        //    Assert.Equal(18, _game.GetScore());
-        //}
+            Assert.Equal(18, _game.GetScore());
+        }
 
         private void RollNTImes(int pins, int times)
         {
