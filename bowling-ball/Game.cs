@@ -6,16 +6,14 @@ namespace BowlingBall
     {
         int[] Rolls = new int[21];
 
-        public void Roll(int[] pins)
+        //This method takes an input of integer array and sets it to Rolls, which denotes
+        //number of pins put down in each roll
+        public void SetRoll(int[] pins)
         {
-            int i=0;
-            foreach(int iterator in pins)
-            {
-                Rolls[i]=iterator;
-                i=i+1;
-            }
+            Rolls = pins;
         }
 
+        //This method computes and returns the final score of a game
         public int GetScore()
         {
             int score = 0;
@@ -34,23 +32,24 @@ namespace BowlingBall
             }
             return score;
         }
-
+        //This method checks if the current frame is a strike
         private bool IsStrike(int frameIndex) {
             return (Rolls[frameIndex] == 10);
         }
-
+        //This method checks if the current frame is a spare
         private bool IsSpare(int frameIndex) {
             return (Rolls[frameIndex] + Rolls[frameIndex+1] == 10);
         }
-
+        //This method returns the number of pins put down in a frame which is
+        //neither strike nor spare
         private int SumOfBallsInFrame(int frameIndex) {
             return (Rolls[frameIndex] + Rolls[frameIndex+1]);
         }
-
+        //This method returns bonus when the current frame is a spare
         private int SpareBonus(int frameIndex) {
             return (Rolls[frameIndex+2]);
         }
-
+        //This method returns bonus when the current frame is a strike
         private int StrikeBonus(int frameIndex) {
             return (Rolls[frameIndex+1] + Rolls[frameIndex+2]);
         }
