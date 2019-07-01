@@ -46,6 +46,25 @@ namespace BowlingBall.Tests
             Assert.Equal(18, _game.GetScore());
         }
 
+        [Fact]
+        public void OneStrikeTest()
+        {
+            _game.Roll(10);
+            _game.Roll(5);
+            _game.Roll(4);
+            RollNTImes(0, 16);
+
+            Assert.Equal(28, _game.GetScore());
+        }
+
+        [Fact]
+        public void AllStrikeTest()
+        {
+            RollNTImes(10, 12);
+
+            Assert.Equal(300, _game.GetScore());
+        }
+
         private void RollNTImes(int pins, int times)
         {
             for (int i = 0; i < times; i++)

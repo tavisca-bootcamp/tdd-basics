@@ -18,29 +18,53 @@ namespace BowlingBall
             int frameIdx = 0;
             for(int frame = 0; frame < 10; frame++)
             {
-                if (isSpare(frame))
-                    score += SpareBonus(frame);
+                if (IsStrike(frameIdx))
+                {
+                    score += 10 + StrikeBonus(frameIdx);
+                    frameIdx++;
+                }else if (IsSpare(frameIdx))
+                {
+                    score += 10 + SpareBonus(frameIdx);
+                    frameIdx += 2;
+                }
+                else
+                {
+                    score += SumOfRolls(frameIdx);
+                    frameIdx += 2;
+                }
+
                 
-                score += rolls[frameIdx] + rolls[frameIdx + 1];
-                frameIdx += 2;
             }
 
             return score;
         }
 
-        private int SpareBonus(int frame)
+        private bool IsSpare(int frameIdx)
         {
-            return rolls[frame + 2];
-        }
-
-        private bool isSpare(int frame)
-        {
-            if (rolls[frame] + rolls[frame + 1] == 10)
+            if (rolls[frameIdx] + rolls[frameIdx + 1] == 10)
                 return true;
             else
                 return false;
         }
-
+        private int SpareBonus(int frameIdx)
+        {
+            return rolls[frameIdx + 2];
+        }
+        private bool IsStrike(int frameIdx)
+        {
+            if (rolls[frameIdx] == 10)
+                return true;
+            else
+                return false;
+        }
+        private int StrikeBonus(int frameIdx)
+        {
+            return rolls[frameIdx + 1] + rolls[frameIdx + 2];
+        }
+        private int SumOfRolls(int frameIdx)
+        {
+            return rolls[frameIdx] + rolls[frameIdx + 1];
+        }
     }
 }
 
