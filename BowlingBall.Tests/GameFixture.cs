@@ -20,7 +20,7 @@ namespace BowlingBall.Tests
         [Fact]
         public void AllZerosTest()
         {
-            Roll(0, 20);
+            RollNTImes(0, 20);
             int score = _game.GetScore();
 
             Assert.Equal(0, score);
@@ -29,13 +29,24 @@ namespace BowlingBall.Tests
         [Fact]
         public void AllOnesTest()
         {
-            Roll(1, 20);
+            RollNTImes(1, 20);
             int score = _game.GetScore();
 
             Assert.Equal(20, score);
         }
 
-        private void Roll(int pins, int times)
+        //[Fact]
+        //public void OneSpareTest()
+        //{
+        //    _game.Roll(4);
+        //    _game.Roll(6);
+        //    _game.Roll(4);
+        //    RollNTImes(0, 17);
+
+        //    Assert.Equal(18, _game.GetScore());
+        //}
+
+        private void RollNTImes(int pins, int times)
         {
             for (int i = 0; i < times; i++)
                 _game.Roll(pins);
