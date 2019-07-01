@@ -15,9 +15,11 @@ namespace BowlingBall
         public int GetScore()
         {
             int score = 0;
-            for(int i = 0; i < rolls.Length; i++)
+            int frameIdx = 0;
+            for(int frame = 0; frame < 10; frame++)
             {
-                score += rolls[i];
+                score += rolls[frameIdx] + rolls[frameIdx + 1];
+                frameIdx += 2;
             }
 
             return score;
