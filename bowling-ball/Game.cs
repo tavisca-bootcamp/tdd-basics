@@ -1,55 +1,15 @@
-﻿using System;
+﻿// Game with Test1
+using System;
 
 namespace BowlingBall
 {
     public class Game
     {
-	   int count = 0;
 	   int score = 0;
-	   bool isSpare = false;
-	   bool isStrike = false;
-	   int prevPin = 0;
-       int strikeCount = 2;    
-       public void Roll(int pins)
+        public void Roll(int pins)
         {
-			count++;
 			if(pins==0)
-			{		
-     		score += 0;
-			return;
-			}
-			score+=pins;
-			if(isSpare)
-			{
-               if(count<=20)
-				 score+=pins;
-				isSpare = false;
-			}
-			if(isStrike)
-			{
-			  if(count<20)
-			 score+=pins;
-			 strikeCount--;
-			 if(strikeCount==0)
-			 {
-				 isStrike = false;
-				 strikeCount = 2;
-			 }
-			}
-			if((pins==10)&&(count<20))
-			{
-			 isStrike = true;
-			 prevPin = 0;
-			 return;
-			}
-			if(pins+prevPin==10)
-			{
-			  isSpare = true;
-			}
-		    if(count%2!=0)
-			   prevPin = pins;
-		    else if(count%2==0)
-			   prevPin = 0;
+				score += 0
 			return;
             throw new NotImplementedException();
         }
