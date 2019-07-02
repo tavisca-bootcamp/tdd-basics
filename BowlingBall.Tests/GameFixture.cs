@@ -48,7 +48,7 @@ namespace BowlingBall.Tests
             g.Roll(6);
             g.Roll(2);
             Rolls(16, 0);
-            Assert.Equal(18, g.GetScore());
+            Assert.Equal(26, g.GetScore());
         }
 
         [Fact]
