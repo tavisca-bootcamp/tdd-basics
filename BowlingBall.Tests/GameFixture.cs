@@ -37,7 +37,7 @@ namespace BowlingBall.Tests
             g.Roll(3);
             g.Roll(5);
             Rolls(17, 0);
-            Assert.Equal(15, g.GetScore());
+            Assert.Equal(20, g.GetScore());
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace BowlingBall.Tests
             g.Roll(10);
             g.Roll(6);
             g.Roll(2);
-            Rolls(17, 0);
+            Rolls(16, 0);
             Assert.Equal(18, g.GetScore());
         }
 
@@ -56,7 +56,7 @@ namespace BowlingBall.Tests
         {
             g = new Game();
             Rolls(12, 10);
-            Assert.Equal(300, g.GetScore());
+            Assert.Equal(200, g.GetScore());
         }                              
     }
 }
