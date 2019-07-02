@@ -1,4 +1,4 @@
-﻿//Game for 5th Test
+﻿//Game for 6th Test
 using System;
 
 namespace BowlingBall
@@ -11,7 +11,7 @@ namespace BowlingBall
 	   bool isStrike = false;
 	   int prevPin = 0;
        int strikeCount = 2;    
-    public void Roll(int pins)
+       public void Roll(int pins)
         {
 			count++;
 			if(pins==0)
@@ -22,7 +22,8 @@ namespace BowlingBall
 			score+=pins;
 			if(isSpare)
 			{
-				score+=pins;
+               if(count<=20)
+				 score+=pins;
 				isSpare = false;
 			}
 			if(isStrike)
