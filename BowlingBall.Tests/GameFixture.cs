@@ -37,6 +37,17 @@ namespace BowlingBall.Tests
 		}
 		
 		
+		[Fact]
+		public void SpareExceptLastFrameTest()
+		{
+		  _game =  new Game();
+		  _game.Roll(5);
+		  _game.Roll(5);
+		   RollAutomatically(18,2);
+		   int expectedValue = 48;
+		   int score = _game.GetScore();
+		   Assert.Equal(expectedValue,score);
+		}
 		
 		
 		
