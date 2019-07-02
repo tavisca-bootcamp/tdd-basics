@@ -51,13 +51,13 @@ namespace BowlingBall
         public int StrikeBonus(int framePosition)
         {
             // calculate bonus for strike
-            return rolls[framePosition + 1] + rolls[framePosition + 2];
+            return rolls[framePosition + 1];
         }
 
         public int SpareBonus(int framePosition)
         {
             // calculate bonus for spare
-            return rolls[framePosition + 1];
+            return rolls[framePosition + 1] + rolls[framePosition + 2]; 
         }
                 
         public int TotalPinsRolledInFrame(int framePosition)
