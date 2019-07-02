@@ -14,33 +14,35 @@ namespace BowlingBall.Tests
 
 
         [Fact]
-        public void canScoreGutterGame()
+        public void CanScoreGutterGame()
         {
-            int[] a = { 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
-            game.Roll(a);
+            int[] rolls = { 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            game.Roll(rolls);
             Assert.Equal(0, game.GetScore());
         }
 
         [Fact]
-        public void canScoreGameOfOnes()
+        public void CanScoreGameOfOnes()
         {
-            int[] a = { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1 };
-            game.Roll(a);
+            int[] rolls = { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1 };
+            game.Roll(rolls);
             Assert.Equal(20, game.GetScore());
         }
 
         [Fact]
-        public void canScoreSpareFollowedByThree()
+        public void CanScoreSpareFollowedByThree()
         {
-            int[] a = { 5,5, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
-            game.Roll(a);
+            int[] rolls = { 5,5, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            game.Roll(rolls);
             Assert.Equal(16, game.GetScore());
         }
 
         [Fact]
-        public void canScoreStrikeFollowedByThreeThenThree()
+        public void CanScoreStrikeFollowedByThreeThenThree()
         {
-            int[] a = { 10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            int[] rolls = { 10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            game.Roll(rolls);
+            Assert.Equal(22, game.GetScore());
         }
 
     }
