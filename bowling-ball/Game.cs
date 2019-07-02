@@ -20,17 +20,20 @@ namespace BowlingBall
                 // to get score when the player hits strike
                 if (IsStrike(framePosition))
                 {
-                    score += 10 + StrikeBonus(framePosition);                    
+                    score += 10 + StrikeBonus(framePosition);
+                    framePosition += 1;
                 }
                 // to get score when the player hits spare
                 else if (IsSpare(framePosition))
                 {
                     score += 10 + SpareBonus(framePosition);
+                    framePosition += 2;
                 }
                 // to get score when the player did not hit a strike or a spare
                 else
                 {
                     score += TotalPinsRolledInFrame(framePosition);
+                    framePosition += 2;
                 }
             }
             return score;

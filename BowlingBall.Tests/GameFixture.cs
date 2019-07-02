@@ -56,7 +56,7 @@ namespace BowlingBall.Tests
         {
             g = new Game();
             Rolls(12, 10);
-            Assert.Equal(200, g.GetScore());
+            Assert.Equal(300, g.GetScore());
         }                              
     }
 }
