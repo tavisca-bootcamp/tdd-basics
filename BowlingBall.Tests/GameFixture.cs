@@ -1,3 +1,4 @@
+
 using System;
 using Xunit;
 
@@ -45,6 +46,19 @@ namespace BowlingBall.Tests
 		  _game.Roll(5);
 		   RollAutomatically(18,2);
 		   int expectedValue = 48;
+		   int score = _game.GetScore();
+		   Assert.Equal(expectedValue,score);
+		}
+		
+		
+		
+		[Fact]
+		public void StrikeExceptLastFrameTest()
+		{
+		  _game = new Game();
+		  _game.Roll(10);
+		   RollAutomatically(18,2);
+		   int expectedValue = 50;
 		   int score = _game.GetScore();
 		   Assert.Equal(expectedValue,score);
 		}
