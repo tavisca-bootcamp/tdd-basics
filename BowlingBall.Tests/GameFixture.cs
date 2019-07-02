@@ -63,6 +63,18 @@ namespace BowlingBall.Tests
 		}
 		
 		
+		[Fact]
+		public void SpareStrikeExceptLastFrame()
+		{
+			_game = new Game();
+			_game.Roll(5);
+			_game.Roll(5);
+			_game.Roll(10);
+			 RollAutomatically(16,2);
+			 int expectedValue = 66;
+		     int score = _game.GetScore();
+		     Assert.Equal(expectedValue,score);
+		}
 		
 		private void RollAutomatically(int rollingCount,int pins)
             {
