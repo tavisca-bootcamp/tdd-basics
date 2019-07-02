@@ -5,10 +5,45 @@ namespace BowlingBall.Tests
 {
     public class GameFixture
     {
-        [Fact]
-        public void DummyTest()
+        Game game;
+
+        public GameFixture()
         {
-            // This is a dummy test that will always pass.
+            game = new Game();
         }
+
+
+        [Fact]
+        public void CanScoreGutterGame()
+        {
+            int[] rolls = { 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            game.Roll(rolls);
+            Assert.Equal(0, game.GetScore());
+        }
+
+        [Fact]
+        public void CanScoreGameOfOnes()
+        {
+            int[] rolls = { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1 };
+            game.Roll(rolls);
+            Assert.Equal(20, game.GetScore());
+        }
+
+        [Fact]
+        public void CanScoreSpareFollowedByThree()
+        {
+            int[] rolls = { 5,5, 3,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            game.Roll(rolls);
+            Assert.Equal(16, game.GetScore());
+        }
+
+        [Fact]
+        public void CanScoreStrikeFollowedByThreeThenThree()
+        {
+            int[] rolls = { 10, 3,3, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 };
+            game.Roll(rolls);
+            Assert.Equal(22, game.GetScore());
+        }
+
     }
 }
