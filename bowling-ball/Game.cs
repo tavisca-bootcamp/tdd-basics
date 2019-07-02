@@ -1,4 +1,4 @@
-﻿//Game for 7th Test
+﻿// Game for 8th Test
 using System;
 
 namespace BowlingBall
