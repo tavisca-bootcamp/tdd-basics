@@ -1,4 +1,4 @@
-﻿//Game for 6th Test
+﻿//Game for 7th Test
 using System;
 
 namespace BowlingBall
@@ -28,6 +28,7 @@ namespace BowlingBall
 			}
 			if(isStrike)
 			{
+			  if(count<20)
 			 score+=pins;
 			 strikeCount--;
 			 if(strikeCount==0)
@@ -36,7 +37,7 @@ namespace BowlingBall
 				 strikeCount = 2;
 			 }
 			}
-			if(pins==10)
+			if((pins==10)&&(count<20))
 			{
 			 isStrike = true;
 			 prevPin = 0;
