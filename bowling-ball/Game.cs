@@ -5,12 +5,12 @@ namespace BowlingBall
     public class Game
     {
         
-        private int[] rolls = new int[21];
-        private int currentRoll = 0;
+        private int[] _rolls = new int[21];
+        private int _currentRoll = 0;
         public void Roll(int pins)
         {
             
-            rolls[currentRoll++] = pins;
+            _rolls[_currentRoll++] = pins;
         }
 
         public int GetScore()
@@ -36,34 +36,31 @@ namespace BowlingBall
 
                 }
 
-
-                
-            
             }
             return score;
         }
 
         private int SumOfBallsInFrame(int frameIndex)
         {
-            return rolls[frameIndex] + rolls[frameIndex + 1];
+            return _rolls[frameIndex] + _rolls[frameIndex + 1];
         }
         private int SpareBonus(int frameIndex)
         {
-            return rolls[frameIndex + 2];
+            return _rolls[frameIndex + 2];
         }
 
         private int StrikeBonus(int frameIndex)
         {
-            return rolls[frameIndex+1] + rolls[frameIndex + 2];
+            return _rolls[frameIndex+1] + _rolls[frameIndex + 2];
         }
 
         private bool IsSpare(int frameIndex)
         {
-            return rolls[frameIndex] + rolls[frameIndex] == 10;
+            return _rolls[frameIndex] + _rolls[frameIndex] == 10;
         }
         private bool IsStrike(int frameIndex)
         {
-            return rolls[frameIndex] == 10;
+            return _rolls[frameIndex] == 10;
         }
     }
 }
