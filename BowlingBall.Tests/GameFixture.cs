@@ -6,8 +6,6 @@ namespace BowlingBall.Tests
     public class GameFixture
     {
         private Game game=new Game();
-
-        
         public void RollMany(int nRolls,int pins)
         {
             for (int i = 0; i < nRolls; i++)
