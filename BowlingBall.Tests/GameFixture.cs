@@ -8,7 +8,7 @@ namespace BowlingBall.Tests
         [Fact]
         public void DummyTest()
         {
-            // This is a dummy test that will always pass.
+            Assert.True(true);
         }
     }
 }
