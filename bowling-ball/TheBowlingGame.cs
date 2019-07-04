@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 namespace BowlingBall
 {
     class TheBowlingGame
     {
-        private var TotalScore;
-        private var Frames;
-        public TheBowlingGame(var rolls)
+        private int TotalScore;
+        private Dictionary<int,Frame> Frames;
+        public TheBowlingGame(ArrayList rolls)
         {
             GameSetup();
             Play(rolls);
@@ -17,9 +18,9 @@ namespace BowlingBall
             TotalScore = 0;
             Frames = new Dictionary<int, Frame>();
         }
-        private void Play(var rolls)
+        private void Play(ArrayList rolls)
         {
-            throw NotImplementedException();
+            throw new NotImplementedException();
         }
         public int GetScore()
         {

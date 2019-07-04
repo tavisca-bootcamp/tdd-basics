@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 namespace BowlingBall
 {
     public class StrikeFrame : Frame
     {
-        public StrikeFrame(var roll1, var roll2, var roll3)
+        public StrikeFrame(int roll1, int roll2, int roll3)
         {
             RollList = new ArrayList();
             RollList.Add(roll1);

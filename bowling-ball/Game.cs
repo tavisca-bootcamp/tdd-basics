@@ -1,13 +1,14 @@
 ﻿using System;
-
+using System.Collections;
+using System.Linq;
 namespace BowlingBall
 {
     public class Game
     {
-        var Rolls=new ArrayList();
+        ArrayList Rolls=new ArrayList();
         public void Roll(int pins)
         {
-            Rolls.add(pins);
+            Rolls.Add(pins);
         }
 
         public int GetScore()

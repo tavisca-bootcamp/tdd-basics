@@ -1,14 +1,15 @@
 using System;
+using System.Collections;
 namespace BowlingBall
 {
-    class Frame
+    public abstract class Frame
     {
-        public var RollList;
-        public var NumberOfRolls;
-        public var Score;
+        public ArrayList RollList;
+        public int NumberOfRolls;
+        public int Score;
         public int GetScore()
         {
-            retrun Score;
+            return Score;
         }
     }
 }
