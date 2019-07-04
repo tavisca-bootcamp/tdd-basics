@@ -9,7 +9,7 @@ namespace BowlingBall
         {
             RollList = new ArrayList();
             //Checking if rolls are valid
-            if ( ( IsValidRoll(roll2) )   &&   ( IsValidRoll(roll2) ) )
+            if ( ( IsValidRoll(roll1) )   &&   ( IsValidRoll(roll2) )  &&  ( roll1+roll2<10 ) )
             {
                 RollList.Add(roll1);
                 RollList.Add(roll2);
