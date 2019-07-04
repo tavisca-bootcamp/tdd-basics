@@ -32,6 +32,9 @@ namespace BowlingBall
                     Frames.Add(currentFrame, new StrikeFrame((int)rolls[currentRoll], (int)rolls[currentRoll+1], (int)rolls[currentRoll+2]));
                     TotalScore += Frames[currentFrame].GetScore();
                     currentRoll += 1;
+                    //extra roll
+                    if (currentFrame == 10)
+                        currentRoll += 2;
                 }
                 //spare
                 else if ((int)rolls[currentRoll] + (int)rolls[currentRoll+1]== 10)
@@ -39,6 +42,9 @@ namespace BowlingBall
                     Frames.Add(currentFrame, new SpareFrame((int)rolls[currentRoll], (int)rolls[currentRoll + 1], (int)rolls[currentRoll + 2]));
                     TotalScore += Frames[currentFrame].GetScore();
                     currentRoll += 2;
+                    //extra roll
+                    if (currentFrame == 10)
+                        currentRoll++;
                 }
                 //regular
                 else
