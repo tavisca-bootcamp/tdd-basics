@@ -18,7 +18,7 @@ namespace BowlingBall.Tests
             catch(Exception E)
             {
                 //throws Exception
-                Assert.True(true);
+                return;
             }
             Assert.True(false);
         }
@@ -34,7 +34,7 @@ namespace BowlingBall.Tests
             catch (Exception E)
             {
                 //throws Exception
-                Assert.True(true);
+                return;
             }
             Assert.True(false);
         }
