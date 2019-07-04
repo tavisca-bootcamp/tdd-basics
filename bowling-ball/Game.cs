@@ -14,12 +14,12 @@ namespace BowlingBall
             int indexFrame = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (isSpare(indexFrame))
+                if (IsSpare(indexFrame))
                 {
                     score += 10 + rolls[indexFrame + 2];
                     indexFrame += 2;
                 }
-                else if (isStrike(indexFrame))
+                else if (IsStrike(indexFrame))
                 {
                     score += 10 + rolls[indexFrame + 1] + rolls[indexFrame + 2];
                     indexFrame++;
@@ -43,12 +43,12 @@ namespace BowlingBall
             for(int indexPins = 0; indexPins < pins.Length; indexPins++)
                 rolls[currentRoll++] = pins[indexPins];
         }
-        private bool isSpare(int indexFrame)
+        private bool IsSpare(int indexFrame)
         {
             return rolls[indexFrame] + rolls[indexFrame + 1] == 10;
         }
 
-        private bool isStrike(int indexFrame)
+        private bool IsStrike(int indexFrame)
         {
             return rolls[indexFrame] == 10;
         }
