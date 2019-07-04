@@ -8,8 +8,13 @@ namespace BowlingBall
         public SpareFrame(int roll1,int roll2,int roll3)
         {
             RollList = new ArrayList();
-            RollList.Add(roll1);
-            RollList.Add(roll2);
+            if ((IsValidRoll(roll1)) && (IsValidRoll(roll2)) && (IsValidRoll(roll3)) && (roll1 + roll2 == 10))
+            {
+                RollList.Add(roll1);
+                RollList.Add(roll2);
+            }
+            else
+                throw new Exception("Invalid Roll");
             NumberOfRolls = 2;
             Score = roll1 + roll2 + roll3;
         }
