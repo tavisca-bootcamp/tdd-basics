@@ -13,6 +13,7 @@ namespace BowlingBall
         bool IsStrike();
         int SpareBonus();
         int StrikeBonus();
- 
+        bool CheckValidInput();
+        bool CheckForEmptyFrame();
     }
 }
