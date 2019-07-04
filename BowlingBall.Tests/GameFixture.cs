@@ -60,7 +60,7 @@ namespace BowlingBall.Tests
         public void Game_when_UserRollsStrike()
         {
             Game game = new Game();
-            int[] pins = { 10 , 0 , 2 , 3};
+            int[] pins = { 10  , 2 , 3};
             game.Roll(pins);
 
             Assert.Equal(20 , game.GetScore());
@@ -68,5 +68,16 @@ namespace BowlingBall.Tests
             //mockObject.Setup(m => m.IsStrike()).Returns(true);
         }
 
+        [Fact]
+        public void Game_when_UserRollsOddInput()
+        {
+            Game game = new Game();
+            int[] pins = { 1, 2, 3 };
+
+            game.Roll(pins);
+
+            // 1+2 = 3 beacuse the user is still playing for second frame (3,-)
+            Assert.Equal(3, game.GetScore());
+        }
     }
 }
