@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 namespace BowlingBall
 {
-    class TheBowlingGame
+    public class TheBowlingGame
     {
         private int TotalScore;
         private Dictionary<int,Frame> Frames;
@@ -20,7 +20,37 @@ namespace BowlingBall
         }
         private void Play(ArrayList rolls)
         {
-            throw new NotImplementedException();
+            var currentRoll = 0;
+            var totalRolls = rolls.Count;
+            var currentFrame = 1;
+
+            while (currentFrame <= 10)
+            {
+                //strike
+                if((int)rolls[currentRoll] == 10)
+                {
+                    Frames.Add(currentFrame, new StrikeFrame((int)rolls[currentRoll], (int)rolls[currentRoll+1], (int)rolls[currentRoll+2]));
+                    TotalScore += Frames[currentFrame].GetScore();
+                    currentRoll += 1;
+                }
+                //spare
+                else if ((int)rolls[currentRoll] + (int)rolls[currentRoll+1]== 10)
+                {
+                    Frames.Add(currentFrame, new SpareFrame((int)rolls[currentRoll], (int)rolls[currentRoll + 1], (int)rolls[currentRoll + 2]));
+                    TotalScore += Frames[currentFrame].GetScore();
+                    currentRoll += 2;
+                }
+                //regular
+                else
+                {
+                    Frames.Add(currentFrame, new RegularFrame((int)rolls[currentRoll], (int)rolls[currentRoll + 1]));
+                    TotalScore += Frames[currentFrame].GetScore();
+                    currentRoll += 2;
+                }
+                currentFrame++;
+            }
+            if (currentRoll < totalRolls)
+                throw new Exception("More than expected rolls");
         }
         public int GetScore()
         {
