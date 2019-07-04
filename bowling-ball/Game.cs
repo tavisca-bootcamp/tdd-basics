@@ -35,10 +35,10 @@ namespace BowlingBall
             int TotalScores = 0;
             for(int ptr=0; ptr <= ActualFrames; ptr++)
             {
-                if (frames[ptr].IsSpare() == true)
-                    TotalScores += 10 + frames[ptr + 1].SpareBonus();
-                else if (frames[ptr].IsStrike() == true)
+                if (frames[ptr].IsStrike() == true)
                     TotalScores += 10 + frames[ptr + 1].StrikeBonus();
+                else if (frames[ptr].IsSpare() == true)
+                    TotalScores += 10 + frames[ptr + 1].SpareBonus();
                 else if (frames[ptr].IsSpare() == false && frames[ptr].IsStrike() == false )
                     TotalScores += frames[ptr].CalculateScore();
                 
