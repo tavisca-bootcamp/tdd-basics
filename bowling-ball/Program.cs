@@ -8,11 +8,19 @@ namespace BowlingBall
         {
             Game game = new Game();
 
-            int[] playerScore = {10, 9, 1, 5, 5, 7, 2, 10, 10, 10, 9, 0, 8, 2, 9, 1, 10};
+            Console.WriteLine("Enter score or 'q' for quit");
+            string score;
+            int[] playerScore = new int[21];
+            for(int i = 0; i < 21; i++){
+                score = Console.ReadLine();
+                if(score == "q")
+                    break;
+                playerScore[i] = int.Parse(score);
+            }
 
-            foreach (var score in playerScore)
+            foreach (var roll in playerScore)
             {
-                game.Roll(score);
+                game.Roll(roll);
             }
 
             System.Console.WriteLine($"Maximum score = {game.GetScore()}");
