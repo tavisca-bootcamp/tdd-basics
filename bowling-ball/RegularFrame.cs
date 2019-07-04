@@ -8,8 +8,15 @@ namespace BowlingBall
         public RegularFrame(int roll1, int roll2)
         {
             RollList = new ArrayList();
-            RollList.Add(roll1);
-            RollList.Add(roll2);
+            //Checking if rolls are valid
+            if ( ( IsValidRoll(roll2) )   &&   ( IsValidRoll(roll2) ) )
+            {
+                RollList.Add(roll1);
+                RollList.Add(roll2);
+            }
+            else
+                throw new Exception("Invalid roll");
+
             NumberOfRolls = 2;
             Score = roll1 + roll2 ;
         }
