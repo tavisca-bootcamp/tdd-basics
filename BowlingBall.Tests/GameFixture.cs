@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 using BowlingBall;
-using Moq;
+//using Moq;
 
 namespace BowlingBall.Tests
 {
@@ -46,26 +46,27 @@ namespace BowlingBall.Tests
         public void Game_when_UserRollsSpare()
         {
             Game game = new Game();
-            int[] pins = { 9, 1 };
+            int[] pins = { 9, 1 , 1 , 2};
             game.Roll(pins);
 
-            Mock<IFrames> mockObject = new Mock<IFrames>();
-            mockObject.Setup(m => m.IsSpare()).Returns(true);
+            Assert.Equal(14, game.GetScore());
+            //Mock<IFrames> mockObject = new Mock<IFrames>();
+            //mockObject.Setup(m => m.IsSpare()).Returns(true);
         }
 
         [Fact]
-
-        //Failed because odd length input, Frames class sets an array of 2
         public void Game_when_UserRollsStrike()
         {
             Game game = new Game();
-            int[] pins = { 10 , 0 };
+            int[] pins = { 10 , 0 , 2 , 3};
             game.Roll(pins);
 
-            Mock<IFrames> mockObject = new Mock<IFrames>();
-            mockObject.Setup(m => m.IsStrike()).Returns(true);
+            Assert.Equal(20 , game.GetScore());
+            //Mock<IFrames> mockObject = new Mock<IFrames>();
+            //mockObject.Setup(m => m.IsStrike()).Returns(true);
         }
 
+        //Fails because of ArrayOutOfBoundsException
         [Fact]
         public void Game_when_UserRollsOddInput()
         {
