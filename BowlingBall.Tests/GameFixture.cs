@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using BowlingBall;
+using Moq;
 
 namespace BowlingBall.Tests
 {
@@ -8,75 +9,74 @@ namespace BowlingBall.Tests
     {
 
         [Fact]
-        public void DummyTest()
+        public void Game_when_UserRollsValidInput()
         {
-            // This is a dummy test that will always pass.
+            Game game = new Game();
+            int[] pins = { 1, 2, 3, 4 };
+
+            game.Roll(pins);
+
+            Assert.Equal(10, game.GetScore());
+
         }
 
         [Fact]
-        public void TestCaseForCheckingStrike()
+        public void Game_when_UserRollsAllZeroes()
         {
             Game game = new Game();
-            game.Roll(10);
-            game.Roll(2);
-            game.Roll(6);
-            game.Roll(7);
-            game.Roll(1);
+            int[] pins = { 0,0,0,0,0,0,0,0 };
 
-            Assert.Equal(34, game.GetScore());
+            game.Roll(pins);
+
+            Assert.Equal(0, game.GetScore());
         }
 
         [Fact]
-        public void TestCaseForCheckingSpare()
+        public void Game_when_UserRollsAllOnes()
         {
             Game game = new Game();
-            game.Roll(8);
-            game.Roll(2);
-            game.Roll(6);
-            game.Roll(7);
-            game.Roll(1);
-            game.Roll(4);
+            int[] pins = { 1, 1, 1, 1, 1, 1, 1, 1 };
 
-            Assert.Equal(34, game.GetScore());
+            game.Roll(pins);
+
+            Assert.Equal(8, game.GetScore());
         }
 
         [Fact]
-        public void GivenTestCase()
+        public void Game_when_UserRollsSpare()
         {
             Game game = new Game();
-            game.Roll(10);
-            game.Roll(9);
-            game.Roll(1);
-            game.Roll(5);
-            game.Roll(5);
-            game.Roll(7);
-            game.Roll(2);
-            game.Roll(10);
-            game.Roll(10);
-            game.Roll(10);
-            game.Roll(9);
-            game.Roll(0);
-            game.Roll(8);
-            game.Roll(2);
-            game.Roll(9);
-            game.Roll(1);
-            game.Roll(10);
+            int[] pins = { 9, 1 };
+            game.Roll(pins);
 
-            Assert.Equal(187, game.GetScore());
+            Mock<IFrames> mockObject = new Mock<IFrames>();
+            mockObject.Setup(m => m.IsSpare()).Returns(true);
         }
 
         [Fact]
 
-        public void RollFunction_ThrowsArgumentException()
+        //Failed because odd length input, Frames class sets an array of 2
+        public void Game_when_UserRollsStrike()
         {
             Game game = new Game();
+            int[] pins = { 10 , 0 };
+            game.Roll(pins);
 
-            Exception ex = Record.Exception(() => game.Roll(100));
-            Assert.NotNull(ex);
-            Assert.IsType<ArgumentException>(ex);
-            Assert.Equal("Enter pin between 1 to 10 both inclusive", ex.Message);
+            Mock<IFrames> mockObject = new Mock<IFrames>();
+            mockObject.Setup(m => m.IsSpare()).Returns(true);
         }
 
-    
+        [Fact]
+        public void Game_when_UserRollsOddInput()
+        {
+            Game game = new Game();
+            int[] pins = { 1, 2, 3 };
+
+            game.Roll(pins);
+
+            // 1+2 = 3 beacuse the user is still playing for second frame (3,-)
+            Assert.Equal(3, game.GetScore());
+        }
+
     }
 }

@@ -4,75 +4,45 @@ namespace BowlingBall
 {
     public class Game
     {
-        //to store points in the game
-        int[] frame = new int[21];
-        //for accessing frame array for storing the rolled pins
-        int framePointer = 0;
-        //for maintaining score
-        int totalScore = 0;
-        public void Roll(int pins)
+        Frames [] frames = new Frames[10];
+        int PointerToFrame;
+        const int TotalFrames = 10;
+        
+        public Game()
         {
-            if (pins < 0 || pins > 10)
-                throw new ArgumentException("Enter pin between 1 to 10 both inclusive");
+            PointerToFrame = 0;
 
-            frame[framePointer++] = pins;
+            for (int index = 0; index < TotalFrames; index++)
+                frames[index] = new Frames();
+        }
+        public void Roll(int [] pins)
+        {
+      
+            int ptr = 0;
+           while(ptr < pins.Length)
+            {
+                frames[PointerToFrame].SetFrame(pins[ptr++], 0);
+                frames[PointerToFrame].SetFrame(pins[ptr++], 1);
+
+                PointerToFrame++;
+            }
         }
 
         public int GetScore()
         {
-            int index = 0;
-            for(int frameNumber = 0; frameNumber < 10; frameNumber++)
+            int TotalScores = 0;
+            for(int ptr=0; ptr < TotalFrames; ptr++)
             {
-                // Case when it is a strike
-                if(IsStrike(index))
-                {
-                    totalScore = totalScore + 10 + BonusForStrike(index);
-                    index++;
-                }
-                // Case when it is a spare
-                else if(IsSpare(index))
-                {
-                    totalScore = totalScore + 10 + BonusForSpare(index);
-                    index = index + 2;
-                }
-                // Calculate normal score
-                else
-                {
-                    totalScore = totalScore + CurrentScore(index);
-                    index = index + 2;
-                }
+                if (frames[ptr].IsSpare() == true)
+                    TotalScores += 10 + frames[ptr + 1].SpareBonus();
+                else if (frames[ptr].IsStrike() == true)
+                    TotalScores += 10 + frames[ptr + 1].StrikeBonus();
+                else if (frames[ptr].IsSpare() == false && frames[ptr].IsStrike() == false)
+                    TotalScores += frames[ptr].CalculateScore();
+                
             }
-
-            return totalScore;
+            return TotalScores;
         }
-
-        public bool IsSpare(int index)
-        {
-            return frame[index] + frame[index + 1] == 10;
-        }
-
-        public bool IsStrike(int index)
-        {
-            return frame[index] == 10;
-        }
-
-        public int BonusForSpare(int index)
-        {
-            //For spare, bonus is current roll point plus next roll point
-            return frame[index + 2];
-        }
-        
-        public int BonusForStrike(int index)
-        {
-            //For strike, bonus is current roll point plus next two rolls point
-            return frame[index + 1] + frame[index + 2];
-        }
-
-        public int CurrentScore(int index)
-        {
-            return frame[index] + frame[index + 1];
-        }
-
     }
 }
 
