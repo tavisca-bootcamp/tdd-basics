@@ -17,14 +17,25 @@ namespace BowlingBall
         }
         public void Roll(int [] pins)
         {
-            
+            const int StrikeConstant = 10;
             int ptr = 0;
            while(ptr < pins.Length)
             {
-              
+                // to check if user is still playing currentframes
+                if (ptr + 1 == pins.Length)
+                    frames[PointerToFrame].SetFrame(pins[ptr++], 0);
+                else if(pins[ptr] == StrikeConstant)
+                {
+                    frames[PointerToFrame].SetFrame(pins[ptr++], 0);
+                    frames[PointerToFrame].SetFrame(0, 1);
+                }
+
+                else if(pins[ptr] != StrikeConstant)
+                {
                     frames[PointerToFrame].SetFrame(pins[ptr++], 0);
                     frames[PointerToFrame].SetFrame(pins[ptr++], 1);
-              
+                }
+                
                 PointerToFrame++;
             }
             ActualFrames = PointerToFrame;
@@ -33,13 +44,14 @@ namespace BowlingBall
         public int GetScore()
         {
             int TotalScores = 0;
-            for(int ptr=0; ptr <= ActualFrames; ptr++)
+            for(int ptr=0; ptr <= PointerToFrame; ptr++)
             {
                 if (frames[ptr].IsStrike() == true)
                     TotalScores += 10 + frames[ptr + 1].StrikeBonus();
                 else if (frames[ptr].IsSpare() == true)
                     TotalScores += 10 + frames[ptr + 1].SpareBonus();
-                else if (frames[ptr].IsSpare() == false && frames[ptr].IsStrike() == false )
+                else if (frames[ptr].IsSpare() == false && frames[ptr].IsStrike() == false 
+                    && frames[ptr].CheckForEmptyFrame() == false)
                     TotalScores += frames[ptr].CalculateScore();
                 
             }
