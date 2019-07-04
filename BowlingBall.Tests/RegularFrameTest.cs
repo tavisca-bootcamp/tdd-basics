@@ -67,6 +67,20 @@ namespace BowlingBall.Tests
             }
             Assert.True(false);
         }
+        [Fact]
+        public void validRollsToCreateRegularFrame()
+        {
+            //valid roll shall not throw exception
+            try
+            {
+                RegularFrame regularFrame = new RegularFrame(5, 4);
+            }
+            catch (Exception e)
+            {
+                Assert.True(false);
+            }
+            Assert.True(true);
+        }
 
     }
 }
