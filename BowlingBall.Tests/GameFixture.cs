@@ -68,17 +68,5 @@ namespace BowlingBall.Tests
             //mockObject.Setup(m => m.IsStrike()).Returns(true);
         }
 
-        [Fact]
-        public void Game_when_UserRollsOddInput()
-        {
-            Game game = new Game();
-            int[] pins = { 1, 2, 3 };
-
-            game.Roll(pins);
-
-            // 1+2 = 3 beacuse the user is still playing for second frame (3,-)
-            Assert.Equal(3, game.GetScore());
-        }
-
     }
 }
