@@ -4,14 +4,16 @@ namespace BowlingBall
 {
     public class Game
     {
+        var Rolls=new ArrayList();
         public void Roll(int pins)
         {
-            throw new NotImplementedException();
+            Rolls.add(pins);
         }
 
         public int GetScore()
         {
-            throw new NotImplementedException();
+            var bowlingGame=new TheBowlingGame(Rolls);
+            return bowlingGame.GetScore();
         }
 
     }
