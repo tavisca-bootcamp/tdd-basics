@@ -148,7 +148,7 @@ namespace BowlingBall.Tests
         {
             try
             {
-                SpareFrame spareFrame = new SpareFrame(5, 4, 1);
+                SpareFrame spareFrame = new SpareFrame(5, 5, 1);
             }
             catch (Exception e)
             {
