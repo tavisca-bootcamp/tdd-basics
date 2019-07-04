@@ -1,4 +1,9 @@
-public class GameFixture
+using System;
+using Xunit;
+
+namespace BowlingBall.Tests
+{
+   public class GameFixture
     {
         Game g;
         public GameFixture()
@@ -107,3 +112,4 @@ public class GameFixture
                 g.Roll(pins);
         }
     }
+}
