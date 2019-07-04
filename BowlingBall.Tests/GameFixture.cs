@@ -18,15 +18,16 @@ namespace BowlingBall.Tests
         
         public void rollMany(int rolls, int pins)
         {
-            for (int i = 0; i < rolls; i++){
+            for (int i = 0; i < rolls; i++)
+            {
                 g.Roll(pins);
             }
         }
         [Fact]
         public void rollSpare()
         {
-            g.Roll(5); //to make score of 10 for spare
-            g.Roll(5);
+            g.Roll(6); //to make score of 10 for spare
+            g.Roll(4);
         }
 
         [Fact]
@@ -75,13 +76,6 @@ namespace BowlingBall.Tests
             Assert.Equal(300, g.Score());
         }
 
-	[Fact]
-        public void RandomGameWithThreeStrikesAtEnd()
-        {
-            g.Roll(new int[] { 1, 3, 7, 3, 10, 1, 7, 5, 2, 5, 3, 8, 2, 8, 2, 10, 10, 10, 10 });
-            Assert.Equal(163, g.Score());
-        }
-
         [Fact]
         public void RandomGameNoExtraRoll()
         {
@@ -96,11 +90,11 @@ namespace BowlingBall.Tests
             Assert.Equal(143, g.Score());
         }
 
-	[Fact]
-        public void RandomGameWithSpareThenStrikeAtEnd()
+        [Fact]
+        public void RandomGameWithThreeStrikesAtEnd()
         {
-            g.Roll(new int[] { 10, 10, 10, 10, 10, 10, 9, 1, 10, 10, 10 });
-            Assert.Equal(219, g.Score());
+            g.Roll(new int[] { 1, 3, 7, 3, 10, 1, 7, 5, 2, 5, 3, 8, 2, 8, 2, 10, 10, 10, 10 });
+            Assert.Equal(163, g.Score());
         }
     }
 }
