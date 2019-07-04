@@ -8,7 +8,10 @@ namespace BowlingBall
         ArrayList Rolls=new ArrayList();
         public void Roll(int pins)
         {
-            Rolls.Add(pins);
+            if ((pins >= 0) && (pins <= 10))
+                Rolls.Add(pins);
+            else
+                throw new Exception("Not possible to roll");
         }
 
         public int GetScore()
