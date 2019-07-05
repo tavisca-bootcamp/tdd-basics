@@ -5,8 +5,8 @@ namespace BowlingBall
     public class Game
     {
         private int[] bowlingRoll = new int[21];
-        private static int currentRoll = 0;
-        private static int score = 0;
+        private int currentRoll = 0;
+        private int score = 0;
         public void Roll(int pins)
         {
             bowlingRoll[currentRoll] = pins;
