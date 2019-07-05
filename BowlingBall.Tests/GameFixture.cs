@@ -6,9 +6,9 @@ namespace BowlingBall.Tests
     public class GameFixture
     {
         Game g = new Game();
-        private void Input(int[] PinsFallDownInEachRoll)
+        private void Input(int[] pinsFallDownInEachRoll)
         {
-            foreach(var pins in PinsFallDownInEachRoll)
+            foreach(var pins in pinsFallDownInEachRoll)
             {
                 g.Roll(pins);
             }
