@@ -4,59 +4,66 @@ using System.Text;
 
 namespace BowlingBall
 {
-    class Frames : IFrames
+    class Frame
     {
-        int[] EachFrame = new int[2];
-        const int LowestPossibleValue = 0;
-        const int HighestPossibleValue = 10;
+        int[] RollChance = new int[2];
+
+        int ExtraRollForLastFrame = -1;
         const int EmptyFrame = -1;
 
-        public Frames()
+        public Frame()
         {
-            this.EachFrame[0] = -1;
-            this.EachFrame[1] = -1;
+            this.RollChance[0] = -1;
+            this.RollChance[1] = -1;
         }
 
-        public void SetFrame(int pin, int indexStatus) => this.EachFrame[indexStatus] = pin;
+        internal void SetFrame(int index , int pin) => this.RollChance[index] = pin;
 
-        public int GetFrame(int indexStatus) => this.EachFrame[indexStatus];
+        internal int GetFrame(int index) => this.RollChance[index];
 
-        public int CalculateScore()
+        internal void SetExtraRollValue(int pin)
         {
-            return EachFrame[0] + EachFrame[1];
+            ExtraRollForLastFrame = pin;
         }
 
-        public bool IsSpare()
+        internal int GetExtraRollValue()
         {
-            return ((this.EachFrame[0] + this.EachFrame[1]) == 10) ? true : false;
+            return ExtraRollForLastFrame;
         }
 
-        public bool IsStrike()
+        internal int CalculateScore()
         {
-            return (this.EachFrame[0] == 10 || this.EachFrame[1] == 10) ? true : false;
+            return RollChance[0] + RollChance[1];
         }
 
-        public int SpareBonus()
+        internal bool IsSpare()
         {
-            return this.EachFrame[0];
+            return ((this.RollChance[0] + this.RollChance[1]) == 10) ? true : false;
         }
 
-        public int StrikeBonus()
+        internal bool IsStrike()
         {
-            return this.EachFrame[0] + this.EachFrame[1];
+            return (this.RollChance[0] == 10 || this.RollChance[1] == 10) ? true : false;
         }
 
-        public bool CheckValidInput()
+        internal int SpareBonus(bool TrackLastFrameStatus)
         {
-            if (this.EachFrame[0] >= LowestPossibleValue && this.EachFrame[0] <= HighestPossibleValue &&
-                this.EachFrame[1] >= LowestPossibleValue && this.EachFrame[1] <= HighestPossibleValue)
-                return true;
-            return false;
+            if (TrackLastFrameStatus == true)
+                return ExtraRollForLastFrame;
+            return this.RollChance[0];
         }
 
-        public bool CheckForEmptyFrame()
+        internal int StrikeBonus(bool TrackLastFrameStatus)
         {
-            if (this.EachFrame[0] == EmptyFrame || this.EachFrame[1] == EmptyFrame)
+            if (TrackLastFrameStatus == true)
+                return ExtraRollForLastFrame;
+            return this.RollChance[0] + this.RollChance[1];
+        }
+
+
+        internal bool CheckForEmptyFrame()
+        {
+            if (this.RollChance[0] == EmptyFrame || this.RollChance[1] == EmptyFrame)
                 return true;
             return false;
         }
