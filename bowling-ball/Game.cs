@@ -27,29 +27,8 @@ namespace BowlingBall
             if (LengthOfPinsArray > HigestPossiblePinsThatCanBeRolled)
                 throw new ArgumentOutOfRangeException();
 
-            //If user rolls spare in last frame, then set the values in last frame and decrement the length by 3
-            //  the length will be 21, as last two frames hold 2 RollChances(=10) and 1 additional roll, so length is decreased by 3
-            if(LengthOfPinsArray == HigestPossiblePinsThatCanBeRolled)
-            {
-                Frames[TotalPossibleFrames - 1].SetExtraRollValue(pins[LengthOfPinsArray - 1]);
-                Frames[TotalPossibleFrames - 1].SetFrame(0,pins[LengthOfPinsArray - 2]);
-                Frames[TotalPossibleFrames - 1].SetFrame(1,pins[LengthOfPinsArray - 3]);
-
-                LengthOfPinsArray = LengthOfPinsArray - 3;
-            }
-
-            // If user rolls strike in last frame, then set the values in last frame and decrement by 2
-            //  the length will be 20, as last two frames hold 1 RollChance(=10) and 1 additional roll, so length is decreased by 2
-            if (LengthOfPinsArray == HigestPossiblePinsThatCanBeRolled - 1 && pins[LengthOfPinsArray - 2] == RolledStrike)
-            {
-                Frames[TotalPossibleFrames - 1].SetExtraRollValue(pins[LengthOfPinsArray - 1]);
-                Frames[TotalPossibleFrames - 1].SetFrame(0,pins[LengthOfPinsArray - 2]);
-                Frames[TotalPossibleFrames - 1].SetFrame(1,0);
-
-                LengthOfPinsArray = LengthOfPinsArray - 2;
-            }
-
-            while (PointerToPinsArray < LengthOfPinsArray)
+            
+            while (PointerToPinsArray < LengthOfPinsArray && PointerToFrame < 9)
             {
                 // To check for valid pin rolled
                 if (CheckForValidInput(pins[PointerToPinsArray]) == false)
@@ -73,6 +52,34 @@ namespace BowlingBall
                 
                 PointerToFrame++;
             }
+
+            //To check for last frame
+            if(PointerToFrame == TotalPossibleFrames - 1 && PointerToPinsArray < LengthOfPinsArray)
+            {
+                //If user rolls spare in last frame, then set the values in last frame as
+                // last value is the extra roll and the two value before that are the last frame roll chances (=10)
+                if (pins[LengthOfPinsArray - 2] + pins[LengthOfPinsArray - 3] == 10)
+                {
+                    Frames[PointerToFrame].SetExtraRollValue(pins[LengthOfPinsArray - 1]);
+                    Frames[PointerToFrame].SetFrame(0, pins[LengthOfPinsArray - 2]);
+                    Frames[PointerToFrame].SetFrame(1, pins[LengthOfPinsArray - 3]);
+                }
+
+                // If user rolls strike in last frame, then set the values in last frame as
+                //  last value is the extra roll and the value before that is the last frame roll chance (=10)
+                else if ( pins[LengthOfPinsArray - 2] == RolledStrike)
+                {
+                    Frames[PointerToFrame].SetExtraRollValue(pins[LengthOfPinsArray - 1]);
+                    Frames[PointerToFrame].SetFrame(0, pins[LengthOfPinsArray - 2]);
+                    Frames[PointerToFrame].SetFrame(1, 0);
+                }
+                else
+                {
+                    Frames[PointerToFrame].SetFrame(0, pins[LengthOfPinsArray - 1]);
+                    Frames[PointerToFrame].SetFrame(1, pins[LengthOfPinsArray - 2]);
+                }
+
+            }
         }
 
         public int GetScore()
@@ -80,7 +87,7 @@ namespace BowlingBall
             int TotalScores = 0;
             const int KnockedDownTen = 10;
 
-            //Checking if whether LastFrame has strike or spare and adding extra roll value
+            //Checking whether LastFrame has strike or spare and adding extra roll value
             if(PointerToFrame == TotalPossibleFrames-1)
             {
                 if (Frames[PointerToFrame].IsStrike() == true && Frames[PointerToFrame].CheckForEmptyFrame() == false)
