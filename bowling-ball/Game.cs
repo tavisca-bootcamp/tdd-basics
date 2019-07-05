@@ -39,27 +39,26 @@ namespace BowlingBall
             return score;
         }
 
-        private int SumOfBallsInFrame(int roll)
+        private int SumOfBallsInFrame(int roll)                             // return strike ball score
         {
             return rollsArray[roll] + rollsArray[roll + 1];
         }
 
-        private int SpareBonus(int roll)
+        private int SpareBonus(int roll)                                    // return the spare ball score
         {
             return rollsArray[roll + 2];
         }
 
-        private int StrikeBonus(int roll)
+        private int StrikeBonus(int roll)                                   // return sum of consecutive rolls
         {
-            return rollsArray[roll + 1] + rollsArray[roll + 2]
+            return rollsArray[roll + 1] + rollsArray[roll + 2];
         }
 
-        private bool IsStrike(int rollIndex)
+        private bool IsStrike(int rollIndex)                                // return true if roll are strike(10)
         {
             return rollsArray[rollIndex] == MaxScore;
         }
-
-        private bool IsSpare(int rollIndex)
+        private bool IsSpare(int rollIndex)                                 // return true if rolls are spare
         {
             return (rollsArray[rollIndex] + rollsArray[rollIndex + 1]) == MaxScore;
         }
