@@ -10,7 +10,7 @@ namespace BowlingBall
         public void Roll(int pins) 
         {
             if(pins < 0 || pins > 10)
-                throw new ArgumentOutOfRangeException();
+                throw new InvalidInputException($"The value of {nameof(pins)} is not valid");
             if(rollIndex < 20){
                 roll[rollIndex] = pins;
                 rollIndex++;
@@ -56,6 +56,12 @@ namespace BowlingBall
             return roll[index] == 10;
         }
 
+    }
+
+    public class InvalidInputException : Exception{
+        public InvalidInputException(string msg): base(msg)
+        {    
+        }
     }
 }
 

@@ -44,7 +44,7 @@ namespace BowlingBall.Tests
         }
 
         [Fact]
-        public void canRollAllTensGame(){
+        public void CanRollAllTensGame(){
             RollMany(10,12);
             int expectedScore = 300;
             int actualScore = this.game.GetScore();
@@ -121,7 +121,7 @@ namespace BowlingBall.Tests
         public void CannotKnockMoreThanTenPins()
         {
         Action act = () => this.game.Roll(11);
-            Assert.Throws<ArgumentOutOfRangeException>(act);
+            Assert.Throws<InvalidInputException>(act);
         }
 
         [Fact]
