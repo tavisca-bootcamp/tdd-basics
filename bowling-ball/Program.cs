@@ -6,8 +6,6 @@ namespace BowlingBall
     {
         public static void Main(string[] args)
         {
-            Game game = new Game();
-
             Console.WriteLine("Enter score or 'q' for quit");
             string score;
             int[] playerScore = new int[21];
@@ -18,12 +16,14 @@ namespace BowlingBall
                 playerScore[i] = int.Parse(score);
             }
 
+            Game game = new Game();
             foreach (var roll in playerScore)
             {
                 game.Roll(roll);
             }
 
-            System.Console.WriteLine($"Maximum score = {game.GetScore()}");
+            int finalScore = game.GetScore();
+            System.Console.WriteLine($"Maximum score = {finalScore}");
         }
     }
 }

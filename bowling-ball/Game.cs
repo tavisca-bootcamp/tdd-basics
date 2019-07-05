@@ -11,7 +11,6 @@ namespace BowlingBall
         public void Roll(int pins)
         {
             rollsArray[pinIndex++] = pins;
-            // throw new NotImplementedException();
         }
 
         public int GetScore()
@@ -23,22 +22,36 @@ namespace BowlingBall
             {
                 if(IsStrike(roll))
                 {
-                    score += MaxScore + rollsArray[roll + 1] + rollsArray[roll + 2];
+                    score += MaxScore + StrikeBonus(roll);
                     roll++;
                 }
                 else if(IsSpare(roll))
                 {
-                    score += MaxScore + rollsArray[roll + 2]; 
+                    score += MaxScore + SpareBonus(roll); 
                     roll += 2;
                 }
                 else
                 {
-                    score += rollsArray[roll] + rollsArray[roll + 1];
+                    score += SumOfBallsInFrame(roll);
                     roll += 2;
                 }
             }
             return score;
-            // throw new NotImplementedException();
+        }
+
+        private int SumOfBallsInFrame(int roll)
+        {
+            return rollsArray[roll] + rollsArray[roll + 1];
+        }
+
+        private int SpareBonus(int roll)
+        {
+            return rollsArray[roll + 2];
+        }
+
+        private int StrikeBonus(int roll)
+        {
+            return rollsArray[roll + 1] + rollsArray[roll + 2]
         }
 
         private bool IsStrike(int rollIndex)
