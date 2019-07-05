@@ -11,7 +11,7 @@ namespace BowlingBall.Tests
             int[] roll = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
             int expected = 0;
             int actual = GetActualScore(roll);
-            Asset.Equal(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -20,7 +20,7 @@ namespace BowlingBall.Tests
             int[] roll = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
             int expected = 0;
             int actual = GetActualScore(roll);
-            Asset.Equal(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace BowlingBall.Tests
             int[] roll = new int[] { 10, 9, 1, 5, 5, 7, 2, 10, 10, 10, 9, 0, 8, 2, 9, 1, 10 };
             int expected = 0;
             int actual = GetActualScore(roll);
-            Asset.Equal(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace BowlingBall.Tests
             int[] roll = new int[] { 5,5, 9, 1, 5, 5, 7, 3, 3,7, 4,6, 5,5, 9, 1, 8, 2, 9, 1, 1 };
             int expected = 0;
             int actual = GetActualScore(roll);
-            Asset.Equal(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         public static int GetActualScore(int[] roll)
