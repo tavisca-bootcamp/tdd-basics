@@ -17,7 +17,8 @@ namespace BowlingBall
         public int GetScore()
         {
             int rollCount = 0;
-            while (rollCount < bowlingRoll.Length - 1)
+            int frameNumber=0;
+            while (frameNumber < 10)            
             {
                 if (bowlingRoll[rollCount] == 10)
                 {
@@ -34,6 +35,7 @@ namespace BowlingBall
                     score = score + bowlingRoll[rollCount] + bowlingRoll[rollCount + 1];
                     rollCount = rollCount + 2;
                 }
+                frameNumber++;
             }
             return score;
         }
