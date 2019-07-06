@@ -132,13 +132,34 @@ namespace BowlingBall.Tests
         public void Game_when_UserRollsStrikeOnLastFrame_should_ReturnCorrectScore()
         {
             Game game = new Game();
-            int[] pins = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 1 };
+            int[] pins = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 1 , 1 };
 
             game.Roll(pins);
 
-            Assert.Equal(92, game.GetScore());
+            Assert.Equal(93, game.GetScore());
         }
 
- 
+        [Fact]
+        public void Game_when_UserRollsRandomGameWithManyStrikes_should_ReturnCorrectScore()
+        {
+            Game game = new Game();
+            int[] pins = { 10, 9, 1, 5, 5, 7, 2, 10, 10, 10, 9, 0, 8, 2 , 9 , 1 , 10};
+
+            game.Roll(pins);
+
+            Assert.Equal(187, game.GetScore());
+        }
+
+        [Fact]
+        public void Game_when_UserRollsAllStrikes_should_ReturnCorrectScore()
+        {
+            Game game = new Game();
+
+            int[] pins = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 , 10 , 10};
+
+            game.Roll(pins);
+
+            Assert.Equal(300, game.GetScore());
+        }
     }
 }
