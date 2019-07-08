@@ -51,6 +51,19 @@ namespace BowlingBall.Tests
             Assert.Equal(40, game.GetScore());
         }
 
+        [Fact]
+        public void TestAllStrike()
+        {
+            Game game = new Game();
+            int k;
+            game.Roll(10);
+            game.Roll(10);
+            game.Roll(3);
+            game.Roll(5);
+            for (k = 0; k < 15; k++)
+                game.Roll(1);
+            Assert.Equal(43, game.GetScore());
+        }
 
         [Fact]
         public void TestStrikeAndSpare()
