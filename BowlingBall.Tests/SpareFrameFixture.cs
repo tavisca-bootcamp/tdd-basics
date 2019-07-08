@@ -4,7 +4,7 @@ using System.Text;
 using Xunit;
 namespace BowlingBall.Tests
 {
-    public class SpareFrameTest
+    public class SpareFrameFixture
     {
         [Fact]
         public void NegativeRollsToCreateSpareFrame()
@@ -12,7 +12,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                SpareFrame spareFrame = new SpareFrame(-1, -2,-8);
+                var spareFrame = new SpareFrame(-1, -2,-8);
             }
             catch (Exception e)
             {
@@ -27,7 +27,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                SpareFrame spareFrame = new SpareFrame(-1, 2, 8);
+                var spareFrame = new SpareFrame(-1, 2, 8);
             }
             catch (Exception e)
             {
@@ -43,7 +43,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                SpareFrame spareFrame = new SpareFrame(1, -2, 8);
+                var spareFrame = new SpareFrame(1, -2, 8);
             }
             catch (Exception e)
             {
@@ -59,7 +59,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                SpareFrame spareFrame = new SpareFrame(1, 2, -8);
+                var spareFrame = new SpareFrame(1, 2, -8);
             }
             catch (Exception e)
             {
@@ -74,7 +74,7 @@ namespace BowlingBall.Tests
             //sum of rolls shall be 10 to create a spare frame
             try
             {
-                SpareFrame spareFrame = new SpareFrame(5,4,10);
+                var spareFrame = new SpareFrame(5,4,10);
             }
             catch (Exception e)
             {
@@ -89,7 +89,7 @@ namespace BowlingBall.Tests
             //sum of rolls shall be 10 to create a spare frame
             try
             {
-                SpareFrame spareFrame = new SpareFrame(5, 6, 10);
+                var spareFrame = new SpareFrame(5, 6, 10);
             }
             catch (Exception e)
             {
@@ -104,7 +104,7 @@ namespace BowlingBall.Tests
             //roll can't be more than 10
             try
             {
-                SpareFrame spareFrame = new SpareFrame(50, 4, 1);
+                var spareFrame = new SpareFrame(50, 4, 1);
             }
             catch (Exception e)
             {
@@ -119,7 +119,7 @@ namespace BowlingBall.Tests
             //roll can't be more than 10
             try
             {
-                SpareFrame spareFrame = new SpareFrame(5, 14, 1);
+                var spareFrame = new SpareFrame(5, 14, 1);
             }
             catch (Exception e)
             {
@@ -134,7 +134,7 @@ namespace BowlingBall.Tests
             //roll can't be more than 10
             try
             {
-                SpareFrame spareFrame = new SpareFrame(5, 4, 11);
+                var spareFrame = new SpareFrame(5, 4, 11);
             }
             catch (Exception e)
             {
@@ -148,7 +148,7 @@ namespace BowlingBall.Tests
         {
             try
             {
-                SpareFrame spareFrame = new SpareFrame(5, 5, 1);
+                var spareFrame = new SpareFrame(5, 5, 1);
             }
             catch (Exception e)
             {
