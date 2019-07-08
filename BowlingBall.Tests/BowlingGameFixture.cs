@@ -6,19 +6,20 @@ using Xunit;
 using BowlingBall;
 namespace BowlingBall.Tests
 {
-    public class TheBowlingGameTest
+    public class BowlingGameFixture
     {
+        private BowlingGame bowlingGame;
         [Fact]
         public void ScoreCannotBeMoreThan300()
         {
-            ArrayList rolls = new ArrayList();
+            var rolls = new ArrayList();
             for(int i = 0; i < 30; i++)
             {
                 rolls.Add(10);
             }
             try
             {
-                TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
+                bowlingGame = new BowlingGame(rolls);
             }
             catch(Exception e)
             {
@@ -30,12 +31,12 @@ namespace BowlingBall.Tests
         [Fact]
         public void BowlingGameWithLessRolls()
         {
-            ArrayList rolls = new ArrayList();
+            var rolls = new ArrayList();
             for (int i = 0; i < 6; i++)
                 rolls.Add(10);
             try
             {
-                TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
+                bowlingGame = new BowlingGame(rolls);
             }
             catch(Exception e)
             {
@@ -47,12 +48,12 @@ namespace BowlingBall.Tests
         [Fact]
         public void BowlingGameWithMoreRolls()
         {
-            ArrayList rolls = new ArrayList();
+            var rolls = new ArrayList();
             for (int i = 0; i < 22; i++)
                 rolls.Add(5);
             try
             {
-                TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
+                bowlingGame = new BowlingGame(rolls);
             }
             catch (Exception e)
             {
@@ -64,65 +65,65 @@ namespace BowlingBall.Tests
         [Fact]
         public void PerfectGameScoreTest()
         {
-            ArrayList rolls = new ArrayList();
-            int expectedValue = 300;
-            int actualValue;
+            var rolls = new ArrayList();
+            var expectedValue = 300;
+            var actualValue=0;
 
             for (int i = 0; i < 12; i++)
                 rolls.Add(10);
-            TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
-            actualValue = theBowlingGame.GetScore();
+            bowlingGame = new BowlingGame(rolls);
+            actualValue = bowlingGame.GetScore();
 
             Assert.Equal(expectedValue, actualValue);
         }
         [Fact]
         public void AllSpareTest()
         {
-            ArrayList rolls = new ArrayList();
-            int expectedValue = 150;
-            int actualValue;
+            var rolls = new ArrayList();
+            var expectedValue = 150;
+            var actualValue=0;
 
             for (int i = 0; i < 21; i++)
                 rolls.Add(5);
-            TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
-            actualValue = theBowlingGame.GetScore();
+            bowlingGame = new BowlingGame(rolls);
+            actualValue = bowlingGame.GetScore();
 
             Assert.Equal(expectedValue, actualValue);
         }
         [Fact]
         public void AllValues2Test()
         {
-            ArrayList rolls = new ArrayList();
-            int expectedValue = 40;
-            int actualValue;
+            var rolls = new ArrayList();
+            var expectedValue = 40;
+            var actualValue=0;
 
             for (int i = 0; i < 20; i++)
                 rolls.Add(2);
-            TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
-            actualValue = theBowlingGame.GetScore();
+            bowlingGame = new BowlingGame(rolls);
+            actualValue = bowlingGame.GetScore();
 
             Assert.Equal(expectedValue, actualValue);
         }
         [Fact]
         public void AllValues3Test()
         {
-            ArrayList rolls = new ArrayList();
-            int expectedValue = 60;
-            int actualValue;
+            var rolls = new ArrayList();
+            var expectedValue = 60;
+            var actualValue=0;
 
             for (int i = 0; i < 20; i++)
                 rolls.Add(3);
-            TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
-            actualValue = theBowlingGame.GetScore();
+            bowlingGame = new BowlingGame(rolls);
+            actualValue = bowlingGame.GetScore();
 
             Assert.Equal(expectedValue, actualValue);
         }
         [Fact]
         public void ExampleTest()
         {
-            ArrayList rolls = new ArrayList();
-            int expectedValue = 187;
-            int actualValue;
+            var rolls = new ArrayList();
+            var expectedValue = 187;
+            var actualValue=0;
 
             rolls.Add(10);
             rolls.Add(9);
@@ -141,8 +142,8 @@ namespace BowlingBall.Tests
             rolls.Add(9);
             rolls.Add(1);
             rolls.Add(10);
-            TheBowlingGame theBowlingGame = new TheBowlingGame(rolls);
-            actualValue = theBowlingGame.GetScore();
+            bowlingGame = new BowlingGame(rolls);
+            actualValue = bowlingGame.GetScore();
 
             Assert.Equal(expectedValue, actualValue);
         }
