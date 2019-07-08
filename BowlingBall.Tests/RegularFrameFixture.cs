@@ -5,15 +5,16 @@ using BowlingBall;
 using Xunit;
 namespace BowlingBall.Tests
 {
-    public class RegularFrameTest
+    public class RegularFrameFixture
     {
+        private RegularFrame regularFrame;
         [Fact]
         public void NegativeRollsToCreateRegularFrame()
         {
             //Negative roll shall throw exception
             try
             {
-                RegularFrame regularFrame = new RegularFrame(-1, -2);
+                regularFrame = new RegularFrame(-1, -2);
             }
             catch(Exception e)
             {
@@ -28,7 +29,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                RegularFrame regularFrame = new RegularFrame(-1, 2);
+                regularFrame = new RegularFrame(-1, 2);
             }
             catch (Exception e)
             {
@@ -43,7 +44,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                RegularFrame regularFrame = new RegularFrame(100,1);
+                regularFrame = new RegularFrame(100,1);
             }
             catch (Exception e)
             {
@@ -58,7 +59,7 @@ namespace BowlingBall.Tests
             //Negative roll shall throw exception
             try
             {
-                RegularFrame regularFrame = new RegularFrame(5, 6);
+                regularFrame = new RegularFrame(5, 6);
             }
             catch (Exception e)
             {
@@ -73,7 +74,7 @@ namespace BowlingBall.Tests
             //valid roll shall not throw exception
             try
             {
-                RegularFrame regularFrame = new RegularFrame(5, 4);
+                regularFrame = new RegularFrame(5, 4);
             }
             catch (Exception e)
             {
