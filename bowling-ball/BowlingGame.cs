@@ -4,11 +4,11 @@ using System.Collections;
 using System.Linq;
 namespace BowlingBall
 {
-    public class TheBowlingGame
+    public class BowlingGame
     {
         private int TotalScore;
         private Dictionary<int,Frame> Frames;
-        public TheBowlingGame(ArrayList rolls)
+        public BowlingGame(ArrayList rolls)
         {
             GameSetup();
             Play(rolls);
