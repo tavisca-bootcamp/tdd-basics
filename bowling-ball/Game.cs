@@ -16,7 +16,7 @@ namespace BowlingBall
 
         public int GetScore()
         {
-            var bowlingGame=new TheBowlingGame(Rolls);
+            var bowlingGame=new BowlingGame(Rolls);
             return bowlingGame.GetScore();
         }
 
