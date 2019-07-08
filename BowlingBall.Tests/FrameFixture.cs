@@ -5,7 +5,7 @@ using Xunit;
 
 namespace BowlingBall.Tests
 {
-    public class FrameTest
+    public class FrameFixture
     {
         [Fact]
         public void RollValueMoreThan10()
