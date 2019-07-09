@@ -4,33 +4,82 @@ using System.Text;
 
 namespace BowlingBall
 {
-    public class BowlingUtility
+    public static class BowlingUtility
     {
-        Game game;
-        public BowlingUtility() => game = new Game();
         
-
-        public int GetScore() => game.GetScore();
-        
-
-        public void RollingASpare(int firstRollPins)
+        public static void RollMultipleTimes(this Game game, int pins, int rolls)
         {
-            game.Roll(firstRollPins);
-            game.Roll(10 - firstRollPins);
+            for (int i = 0; i < rolls; i++)
+                game.Roll(pins);
         }
 
-        public void RollingAStrike() => game.Roll(10);
-        
-        public void RollsManyTimes(int pins, int n)
+        public static void HandleArrayOfPins(this Game game, int[] pins)
         {
-            for (int i = 0; i < n; i++)
+            foreach(var pin in pins)
             {
-                game.Roll(pins);
+                game.Roll(pin);
             }
         }
-        public void RollsNormal(int pins) => game.Roll(pins);
-        
-        public void RollsNothing() => game.Roll(0);
-        
+        public static int GetTotalPins(this Game game)
+        {
+
+            int totalpins = 0;
+            foreach (Frame frame in game.Frames)
+            {
+                totalpins += frame.PinsRemaining;
+            }
+            return totalpins;
+
+        }
+        public static int GetTotalBowl(this Game game)
+        {
+            int totalbowl = 0;
+            foreach (Frame frame in game.Frames)
+            {
+                totalbowl += frame.BowlRemaining;
+            }
+            return totalbowl;
+        }
+
+        public static int GetTotalSlotsCount(this Game game)
+        {
+            int totalslot = 0;
+            foreach (Frame frame in game.Frames)
+            {
+                totalslot += frame.Slots.Count;
+            }
+            return totalslot;
+        }
+        public static int GetValueInSlot(this Game game, int frameIndex)
+        {
+            int n;
+            n = game.Frames[game.currentFrameIndex].Slots[frameIndex].NumberOfBallKnocked;
+            return n;
+        }
+        public static int GetCurrentFrameRemainingPins(this Game game)
+        {
+            int n;
+            n = game.Frames[game.currentFrameIndex].PinsRemaining;
+            return n;
+        }
+        public static int GetFrameRemainingPins(this Game game, int frameIndex)
+        {
+            int n;
+            n = game.Frames[frameIndex].PinsRemaining;
+            return n;
+        }
+        public static int GetCurrentFrameIndex(this Game game)
+        {
+            return game.currentFrameIndex;
+        }
+        public static int GetCurrentFrameTotalSlotCount(this Game game)
+        {
+            return game.Frames[game.currentFrameIndex].Slots.Count;
+        }
+        public static int GetTotalFrameCount(this Game game)
+        {
+            return game.Frames.Count;
+        }
+
     }
 }
