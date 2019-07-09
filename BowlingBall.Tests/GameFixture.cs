@@ -44,7 +44,7 @@ namespace BowlingBall.Tests
         }
 
         [Fact]
-        public void RollSpareEveryFrame()
+        public void RollSpareEveryFramee()
         {
 
             RollMany(21, 5);
