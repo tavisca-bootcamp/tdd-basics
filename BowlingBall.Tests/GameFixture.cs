@@ -27,6 +27,15 @@ namespace BowlingBall.Tests
         {
             game.Roll(10);
         }
+
+        [Fact]
+        public void TestInvalidNumberOfRolls()
+        {
+            SetUp();
+            RollMany(20,0);
+            game.Roll(10);
+            Assert.Equal(-1, game.GetScore());
+        }
         [Fact]
         public void TestGutterGame()
         {

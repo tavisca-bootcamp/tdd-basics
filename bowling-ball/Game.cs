@@ -29,8 +29,6 @@ namespace BowlingBall
             return bowls[frameIndex+1] + bowls[frameIndex+2];
         }
 
-        
-
         public void Roll(int pins)
         {
             bowls[currentBowl] = pins;
@@ -44,6 +42,9 @@ namespace BowlingBall
 
         public int GetScore()
         {
+            if(currentBowl >= TOTALBOWLS)
+                return -1;
+
             int totalScore = 0;
             int frameIndex = 0;
 
