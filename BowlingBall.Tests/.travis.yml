@@ -5,5 +5,5 @@ dotnet: 2.2.300
 install:
     - dotnet restore
 script:
-    - dotnet build
+    - dotnet build --configuration Release
     - dotnet test BowlingBall.Tests/BowlingBall.Tests.csproj

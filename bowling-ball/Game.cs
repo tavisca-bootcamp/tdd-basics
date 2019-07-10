@@ -40,9 +40,16 @@ namespace BowlingBall
             return bowls[frameIndex] + bowls[frameIndex+1];
         }
 
-        public int GetScore()
+        private bool CheckValidBowls()
         {
             if(currentBowl >= TOTALBOWLS)
+                return false;
+            else
+                return true;
+        }
+        public int GetScore()
+        {
+            if(!CheckValidBowls())
                 return -1;
 
             int totalScore = 0;
@@ -66,6 +73,7 @@ namespace BowlingBall
                     frameIndex+=2;
                 }
             }  
+            
             return totalScore; 
         }
 
