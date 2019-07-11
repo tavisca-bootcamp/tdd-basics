@@ -27,6 +27,31 @@ namespace BowlingBall.Tests
 
             Assert.Equal(187, game.GetScore());
         }
+
+        [Fact]
+        public void AllStrikeTest()
+        {
+            for(var i=0; i<12; i++)
+                game.Roll(10);
+
+            Assert.Equal(300, game.GetScore());
+        }
+
+        [Fact]
+        public void AllSpares()
+        {
+            for(var i=0; i<21; i++)
+                game.Roll(5);
+            Assert.Equal(150, game.GetScore());
+        }
+
+        [Fact]
+        public void AllMiss()
+        {
+            for(var i=0; i<20; i++)
+                game.Roll(0);
+            Assert.Equal(0, game.GetScore());
+        }
     }
 }
 
