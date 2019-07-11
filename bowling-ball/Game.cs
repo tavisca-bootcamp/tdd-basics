@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace BowlingBall
 {
@@ -61,24 +61,8 @@ namespace BowlingBall
                     {
                         //Strike Condition
                         totalScore += 10;
-                        
-                        //int ballCounter = 0;
-                        if (scoreBoard[frame + 1, 0] != 10)
-                        {
-                            //if Next is not Strike
-                            totalScore += scoreBoard[frame + 1, 0] + scoreBoard[frame + 1, 1];
 
-                        }
-                        else
-
-                        {
-                            // If next is also strike
-                            if (frame != 8)
-                                totalScore += scoreBoard[frame + 2, 0] + 10;
-                            else
-                                totalScore += scoreBoard[9,0] + scoreBoard[9, 1];
-
-                        }
+                        StrikeAtPosition(frame);
 
 
                     }
@@ -86,8 +70,7 @@ namespace BowlingBall
                         if (scoreBoard[frame, 0] + scoreBoard[frame, 1] == 10)
                     {//Spear Condition
 
-                        totalScore += 10 + scoreBoard[frame + 1, 0];
-
+                        SpearAtPostion(frame);
                     }
                     else
                         totalScore += scoreBoard[frame, 0] + scoreBoard[frame, 1];
@@ -110,6 +93,36 @@ namespace BowlingBall
             return totalScore;
             throw new NotImplementedException();
          }
+
+        private void SpearAtPostion(int frame)
+        {
+            totalScore += 10 + scoreBoard[frame + 1, 0];
+            return;
+            throw new NotImplementedException();
+        }
+
+        private void StrikeAtPosition(int frame)
+        {   //int ballCounter = 0;
+            if (scoreBoard[frame + 1, 0] != 10)
+            {
+                //if Next is not Strike
+                totalScore += scoreBoard[frame + 1, 0] + scoreBoard[frame + 1, 1];
+
+            }
+            else
+
+            {
+                // If next is also strike
+                if (frame != 8)
+                    totalScore += scoreBoard[frame + 2, 0] + 10;
+                else
+                    totalScore += scoreBoard[9, 0] + scoreBoard[9, 1];
+
+            }
+            return;
+            throw new NotImplementedException();
+        }
+
         public void MultipleRolls(int [] Rolls)
         {   if (Rolls.Length > 21)
             {
