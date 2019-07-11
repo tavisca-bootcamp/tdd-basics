@@ -28,16 +28,16 @@ namespace BowlingBall
             int current=0;
             for(var frames=1; frames <= MAXFRAMES; frames++){
                 if(IsStrike(current)){
-                    score += StrikeScore(current);
+                    score += GetScoreByRoll(current) + Bonus(current);
                     current++;
                 }
                 else if(IsSpare(current)){
-                    score += SpareScore(current);
+                    score += GetScoreByRoll(current) + Bonus(current);
                     current+=2;
                 }
                 else{   
-                    score += Score(current++);
-                    score += Score(current++);
+                    score += GetScoreByRoll(current++);
+                    score += GetScoreByRoll(current++);
                 }
             }
 
@@ -52,15 +52,11 @@ namespace BowlingBall
             return rolls[current] + rolls[current+1] == 10;
         }
 
-        private int StrikeScore(int current){
-            return rolls[current] + rolls[current+1] + rolls[current+2];
+        private int Bonus(int current){
+            return rolls[current+1] + rolls[current+2];
         }
 
-        private int SpareScore(int current){
-            return StrikeScore(current);
-        }
-
-        private int Score(int current){
+        private int GetScoreByRoll(int current){
             return rolls[current];
         }
     }
