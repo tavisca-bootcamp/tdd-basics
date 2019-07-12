@@ -12,18 +12,13 @@ namespace BowlingBall.Tests
             game = new Game();
         }
 
-        private void RollMany(int n, int pins)
-        {
-            for (int i = 0; i < n; i++)
-                game.Roll(pins);
-        }
-
         [Fact]
         public void TestGutterGame()
         {
             int n = 20;
             int pins = 0;
-            RollMany(n, pins);
+            for (int i = 0; i < n; i++)
+                game.Roll(pins);
             Assert.Equal(0, game.GetScore());
         }
 
@@ -32,7 +27,8 @@ namespace BowlingBall.Tests
         {
             int n = 20;
             int pins = 1;
-            RollMany(n, pins);
+            for (int i = 0; i < n; i++)
+                game.Roll(pins);
             Assert.Equal(20, game.GetScore());
         }
 
@@ -42,7 +38,8 @@ namespace BowlingBall.Tests
             game.Roll(5);
             game.Roll(5);
             game.Roll(5);
-            RollMany(17, 1);
+            for (int i = 0; i < 17; i++)
+               game.Roll(1);
             Assert.Equal(37, game.GetScore());
         }
 
@@ -52,14 +49,16 @@ namespace BowlingBall.Tests
             game.Roll(10);
             game.Roll(4);
             game.Roll(2);
-            RollMany(17, 0);
+            for(int i=0;i<17;i++)
+                game.Roll(0);
             Assert.Equal(22, game.GetScore());
         }
 
         [Fact]
         public void TestPerfectGame()
         {
-            RollMany(12, 10);
+            for(int I=0;I<12;I++)
+                game.Roll(10);
             Assert.Equal(300, game.GetScore());
         }
     }
