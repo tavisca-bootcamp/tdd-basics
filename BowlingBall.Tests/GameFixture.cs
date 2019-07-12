@@ -91,8 +91,8 @@ namespace BowlingBall.Tests
 
             int[] score = { 7, 3, 10, 10, 8, 1, 9, 1, 8, 1, 10, 9, 1, 8, 2, 6, 1 };
             foreach (int pins in score)
-                game.Roll(pins);
-            int actual = game.GetScore();
+                g.Roll(pins);
+            int actual = g.GetScore();
 
             Assert.Equal(expected, actual);
         }
