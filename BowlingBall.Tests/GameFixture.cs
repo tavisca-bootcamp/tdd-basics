@@ -1,8 +1,7 @@
 using System;
 using Xunit;
 
-namespace BowlingBall.Tests
-{
+namespace BowlingBall.Tests {
     public class GameFixture {
         Game g;
         public GameFixture() {
@@ -19,12 +18,12 @@ namespace BowlingBall.Tests
             Assert.Equal(20, g.GetScore());
         }
         [Fact]
-		public void TestFirstFrameSpare(){
-			g.Roll(7); 
+        public void TestFirstFrameSpare() {
+            g.Roll(7);
             g.Roll(3);
             NRolls(18, 2);
             Assert.Equal(48, g.GetScore());
-		}
+        }
         [Fact]
         public void TestFirstFrameStrike() {
             g.Roll(10);
@@ -49,7 +48,7 @@ namespace BowlingBall.Tests
         }
         [Fact]
         public void TestNineFrameStrikesTenthFrameSpare() {
-            NRolls(9,10);
+            NRolls(9, 10);
             g.Roll(9);
             g.Roll(1);
             g.Roll(1);
@@ -57,16 +56,11 @@ namespace BowlingBall.Tests
         }
         [Fact]
         public void TestTenthFrameSpareAndStrike() {
-            NRolls(18,0);
+            NRolls(18, 0);
             g.Roll(8);
             g.Roll(2);
             g.Roll(10);
             Assert.Equal(20, g.GetScore());
-        }
-        [Fact]
-        public void TestWithThreeStrikesInEnd() {
-            g.Roll(new int[] { 4, 3, 7, 3, 10, 1, 8, 5, 3, 5, 3, 8, 2, 8, 2, 10, 10, 10, 10 });
-            Assert.Equal(169, g.GetScore());
         }
         [Fact]
         public void TestAllSpares() {
@@ -95,6 +89,6 @@ namespace BowlingBall.Tests
         private void NRolls(int n, int pins) {
             for (int i = 0; i < n; i++)
                 g.Roll(pins);
-        } 
+        }
     }
 }
