@@ -34,7 +34,7 @@ When doing the exercise, it is important to stick to the three rules of TDD. For
 
 # Have fun!
 
-1: https://twitter.com/unclebobmartin
-2: http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
-3: https://xunit.net/
-4: http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
+- https://twitter.com/unclebobmartin
+- http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
+- https://xunit.net/
+- http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
