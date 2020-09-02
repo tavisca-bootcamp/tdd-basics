@@ -11,4 +11,10 @@ namespace BowlingBall
         None,
         NotAttempted
     }
+
+    public enum FrameType
+    {
+        Normal,
+        Final
+    }
 }

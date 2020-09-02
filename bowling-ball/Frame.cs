@@ -9,5 +9,51 @@ namespace BowlingBall
         public int[] Rolls;
         public FrameState State;
         public int Bonus;
+
+        int rollIndex;
+        FrameType frameType;
+
+        public FrameType Type
+        {
+            get { return frameType; }
+            set
+            {
+                if (value == FrameType.Final)
+                    Rolls = new int[] { 0, 0, 0 };
+
+                frameType = value;
+            }
+        }
+
+        public Frame()
+        {
+            Rolls = new int[] { 0, 0 };
+            State = FrameState.NotAttempted;
+            rollIndex = -1;
+            Bonus = 0;
+        }
+
+        public void Roll(int pins)
+        {
+            Rolls[++rollIndex] = pins;
+
+            if (Rolls[0] == 10)
+                State = FrameState.Strike;
+            else if (Rolls[0] + Rolls[1] == 10)
+                State = FrameState.Spare;
+            else if (rollIndex == 1)
+                State = FrameState.None;
+
+            if (Rolls[0] + Rolls[1] > 10 && Type != FrameType.Final)
+                throw new InvalidOperationException();
+        }
+
+        public int GetPinCount()
+        {
+            if (Type == FrameType.Final)
+                return Rolls[0] + Rolls[1] + Rolls[2];
+            else
+                return Rolls[0] + Rolls[1];
+        }
     }
 }
