@@ -4,6 +4,7 @@ namespace BowlingBall
 {
     public class Game
     {
+        public Frame[] Frames;
         public void Roll(int pins)
         {
             throw new NotImplementedException();
@@ -13,7 +14,6 @@ namespace BowlingBall
         {
             throw new NotImplementedException();
         }
-
     }
 }
 
