@@ -8,3 +8,4 @@ script:
     - dotnet build
     - dotnet test BowlingBall.Tests/BowlingBall.Tests.csproj
 
+
